@@ -1,0 +1,3073 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Пневмоторакс — Полный атлас и руководство по ОБЗР</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      /* Colors — Ventriloc Palette */
+      --color-graphite: #202020;
+      --color-canvas-white: #ffffff;
+      --color-ash: #efefef;
+      --color-fog: #f5f5f5;
+      --color-ivory: #ebe6dd;
+      --color-steel: #4d4d4d;
+      --color-slate: #828282;
+      --color-mist: #e8e8e8;
+      --color-ember-orange: #ff682c;
+      --color-ember-soft: rgba(255, 104, 44, 0.12);
+      --color-ember-wash: rgba(255, 104, 44, 0.06);
+      --color-brass: #816729;
+      --color-brass-soft: rgba(129, 103, 41, 0.12);
+
+      /* Typography */
+      --font-polysans: 'PolySans', 'Inter Tight', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      /* Type Scale */
+      --text-caption: 14px;
+      --text-subheading: 18px;
+      --text-heading: 32px;
+      --text-heading-lg: 40px;
+      --text-display: 66px;
+
+      /* Spacing & Layout */
+      --page-max-width: 1200px;
+      --section-gap: 80px;
+      --card-padding: 40px;
+      --element-gap: 20px;
+
+      /* Radii — Three-Radius System */
+      --radius-buttons: 0px;
+      --radius-asymmetric: 6px 0px 0px 0px;
+      --radius-data: 20px;
+      --radius-pill: 200px;
+      --radius-card: 8px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      font-size: 16px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--color-canvas-white);
+      color: var(--color-graphite);
+      font-family: var(--font-inter);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.55;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    button, input, a {
+      font-family: inherit;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Editorial PolySans / Inter Tight Headings — strictly weight 400 */
+    h1, h2, h3, h4, .font-display {
+      font-family: var(--font-polysans);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--color-graphite);
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+      color: var(--color-steel);
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--page-max-width);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
+    }
+
+    /* Alternating Surface Bands */
+    .band-white {
+      background-color: var(--color-canvas-white);
+      padding: var(--section-gap) 0;
+    }
+
+    .band-ash {
+      background-color: var(--color-ash);
+      padding: var(--section-gap) 0;
+    }
+
+    .band-hero {
+      background-color: var(--color-canvas-white);
+      padding-top: 48px;
+      padding-bottom: 64px;
+    }
+
+    /* Eyebrow & Typography Roles */
+    .eyebrow {
+      font-family: var(--font-polysans);
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      color: var(--color-brass);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--color-ember-orange);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 5.2vw, 66px);
+      line-height: 0.96;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 3.6vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: clamp(22px, 2.5vw, 32px);
+      line-height: 1.19;
+      letter-spacing: -0.02em;
+    }
+
+    .subheading {
+      font-family: var(--font-inter);
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.38;
+      color: var(--color-steel);
+    }
+
+    .caption {
+      font-family: var(--font-inter);
+      font-size: 14px;
+      line-height: 1.43;
+      color: var(--color-slate);
+    }
+
+    /* Link with Ember Orange Underline */
+    .orange-link {
+      color: var(--color-graphite);
+      text-decoration: none;
+      border-bottom: 1px solid var(--color-ember-orange);
+      padding-bottom: 2px;
+      font-family: var(--font-inter);
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.18s ease, opacity 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .orange-link:hover {
+      color: var(--color-ember-orange);
+    }
+
+    /* Buttons — Strict 0px Radius, No Shadows */
+    .btn-primary, .btn-ghost, .btn-tab {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: var(--radius-buttons);
+      font-family: var(--font-polysans);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      padding: 12px 22px;
+      min-height: 44px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+      border: 1px solid var(--color-graphite);
+    }
+
+    .btn-primary {
+      background-color: var(--color-graphite);
+      color: var(--color-canvas-white);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-steel);
+      border-color: var(--color-steel);
+    }
+
+    .btn-ghost {
+      background-color: transparent;
+      color: var(--color-graphite);
+    }
+
+    .btn-ghost:hover {
+      background-color: var(--color-ash);
+    }
+
+    .btn-tab {
+      background-color: var(--color-canvas-white);
+      color: var(--color-graphite);
+      border-color: var(--color-mist);
+      font-size: 15px;
+      padding: 11px 18px;
+    }
+
+    .btn-tab:hover {
+      border-color: var(--color-graphite);
+    }
+
+    .btn-tab.is-active {
+      background-color: var(--color-graphite);
+      color: var(--color-canvas-white);
+      border-color: var(--color-graphite);
+    }
+
+    /* Ventriloc Cards */
+    .asymmetric-card {
+      background-color: var(--color-ash);
+      border-radius: var(--radius-asymmetric);
+      padding: 56px 48px 48px 56px;
+    }
+
+    .asymmetric-card--ivory {
+      background-color: var(--color-ivory);
+    }
+
+    .asymmetric-card--white {
+      background-color: var(--color-canvas-white);
+    }
+
+    .data-card {
+      background-color: var(--color-canvas-white);
+      border-radius: var(--radius-data);
+      padding: 32px;
+      border: 1px solid var(--color-mist);
+    }
+
+    .data-card--ash {
+      background-color: var(--color-ash);
+      border-color: transparent;
+    }
+
+    .data-card--fog {
+      background-color: var(--color-fog);
+      border-color: var(--color-mist);
+    }
+
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: var(--radius-pill);
+      padding: 5px 12px;
+      font-family: var(--font-polysans);
+      font-weight: 400;
+      font-size: 12px;
+      letter-spacing: -0.02em;
+      background-color: var(--color-ash);
+      color: var(--color-graphite);
+    }
+
+    .tag-pill--brass {
+      background-color: var(--color-brass-soft);
+      color: var(--color-brass);
+    }
+
+    .tag-pill--ember {
+      background-color: var(--color-ember-soft);
+      color: var(--color-ember-orange);
+    }
+
+    /* =======================================================
+       ENTRY SPLASH OVERLAY (Ventriloc Editorial Credits)
+       ======================================================= */
+    .entry-splash {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background-color: var(--color-canvas-white);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: max(28px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(28px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+      transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.45s ease;
+    }
+
+    .entry-splash.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .splash-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: var(--page-max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--color-mist);
+    }
+
+    .splash-brand {
+      font-family: var(--font-polysans);
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      color: var(--color-graphite);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .splash-center {
+      max-width: var(--page-max-width);
+      width: 100%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      padding: 24px 0;
+    }
+
+    .splash-title {
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 0.94;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .splash-authors-card {
+      background-color: var(--color-ivory);
+      border-radius: var(--radius-asymmetric);
+      padding: 40px 36px;
+    }
+
+    .splash-author-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(32, 32, 32, 0.1);
+    }
+
+    .splash-author-row:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .splash-author-name {
+      font-family: var(--font-polysans);
+      font-weight: 400;
+      font-size: clamp(22px, 2.5vw, 28px);
+      letter-spacing: -0.02em;
+      color: var(--color-graphite);
+    }
+
+    .splash-author-role {
+      font-size: 13px;
+      color: var(--color-brass);
+      font-family: var(--font-polysans);
+      letter-spacing: -0.02em;
+    }
+
+    .splash-bottom {
+      max-width: var(--page-max-width);
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px solid var(--color-mist);
+    }
+
+    .splash-progress-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1 1 220px;
+      max-width: 340px;
+    }
+
+    .splash-progress-track {
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-mist);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .splash-progress-bar {
+      height: 100%;
+      width: 0%;
+      background-color: var(--color-ember-orange);
+      transition: width 0.1s linear;
+    }
+
+    /* =======================================================
+       HEADER & NAVIGATION PILL
+       ======================================================= */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-mist);
+      padding-top: env(safe-area-inset-top);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 68px;
+    }
+
+    .wordmark {
+      text-decoration: none;
+      color: var(--color-graphite);
+      font-family: var(--font-polysans);
+      font-weight: 400;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .wordmark-sub {
+      font-size: 12px;
+      color: var(--color-slate);
+      padding-left: 10px;
+      border-left: 1px solid var(--color-mist);
+    }
+
+    .nav-pill {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background-color: var(--color-ash);
+      border-radius: var(--radius-pill);
+      padding: 8px 20px;
+    }
+
+    .nav-pill a {
+      font-family: var(--font-polysans);
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      color: var(--color-graphite);
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 4px 2px;
+      transition: color 0.18s ease;
+    }
+
+    .nav-pill a:hover, .nav-pill a.is-active {
+      color: var(--color-ember-orange);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .lang-toggle {
+      background: none;
+      border: none;
+      font-family: var(--font-polysans);
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      color: var(--color-slate);
+      cursor: pointer;
+      padding: 8px 4px;
+      min-height: 44px;
+    }
+
+    .lang-toggle:hover {
+      color: var(--color-graphite);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--color-ash);
+      border: none;
+      border-radius: var(--radius-pill);
+      padding: 10px 16px;
+      min-height: 44px;
+      font-family: var(--font-polysans);
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      color: var(--color-graphite);
+      cursor: pointer;
+    }
+
+    .mobile-drawer {
+      display: none;
+      background-color: var(--color-canvas-white);
+      border-top: 1px solid var(--color-mist);
+      padding: 16px 20px 24px;
+    }
+
+    .mobile-drawer.is-open {
+      display: block;
+    }
+
+    .mobile-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background-color: var(--color-ash);
+      border-radius: 6px 0 0 0;
+      text-decoration: none;
+      color: var(--color-graphite);
+      font-family: var(--font-polysans);
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      min-height: 44px;
+    }
+
+    /* =======================================================
+       HERO GRID & DASHBOARD CLUSTER
+       ======================================================= */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+      margin-bottom: 22px;
+    }
+
+    .hero-dashboard-wrap {
+      background-color: var(--color-ash);
+      border-radius: var(--radius-asymmetric);
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .hero-cards-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .metric-number {
+      font-family: var(--font-polysans);
+      font-weight: 400;
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--color-graphite);
+    }
+
+    /* =======================================================
+       PARTNER / REFERENCE METRIC STRIP
+       ======================================================= */
+    .strip-band {
+      background-color: var(--color-canvas-white);
+      padding: 28px 0 56px;
+    }
+
+    .strip-caption {
+      font-family: var(--font-polysans);
+      font-size: 13px;
+      letter-spacing: -0.02em;
+      color: var(--color-brass);
+      margin-bottom: 18px;
+    }
+
+    .strip-items {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+      align-items: start;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-mist);
+    }
+
+    .strip-item-val {
+      font-family: var(--font-polysans);
+      font-size: 20px;
+      letter-spacing: -0.02em;
+      color: var(--color-graphite);
+      margin-bottom: 4px;
+    }
+
+    .strip-item-lbl {
+      font-size: 13px;
+      color: var(--color-slate);
+      line-height: 1.35;
+    }
+
+    /* =======================================================
+       SECTION HEADERS & GRIDS
+       ======================================================= */
+    .section-head {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: end;
+      margin-bottom: 40px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    /* =======================================================
+       INTERACTIVE SIMULATOR
+       ======================================================= */
+    .sim-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .sim-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .sim-canvas-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .sim-controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-mist);
+    }
+
+    .range-wrap {
+      flex: 1 1 200px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      background: var(--color-mist);
+      outline: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--color-graphite);
+      border: 2px solid var(--color-canvas-white);
+      cursor: pointer;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--color-graphite);
+      border: 2px solid var(--color-canvas-white);
+      cursor: pointer;
+    }
+
+    .telemetry-list {
+      display: grid;
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--color-mist);
+      gap: 12px;
+    }
+
+    .telemetry-val {
+      font-family: var(--font-polysans);
+      font-size: 20px;
+      letter-spacing: -0.02em;
+      color: var(--color-graphite);
+      text-align: right;
+    }
+
+    .telemetry-val.is-ember {
+      color: var(--color-ember-orange);
+    }
+
+    .telemetry-val.is-brass {
+      color: var(--color-brass);
+    }
+
+    /* =======================================================
+       SYMPTOM CHECKER & TRIAGE
+       ======================================================= */
+    .triage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .symptom-chip {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      width: 100%;
+      text-align: left;
+      padding: 14px 16px;
+      background-color: var(--color-canvas-white);
+      border: 1px solid var(--color-mist);
+      border-radius: 0px;
+      cursor: pointer;
+      min-height: 48px;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .symptom-chip:hover {
+      border-color: var(--color-graphite);
+    }
+
+    .symptom-chip.is-selected {
+      background-color: var(--color-ivory);
+      border-color: var(--color-graphite);
+    }
+
+    .symptom-box {
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--color-graphite);
+      flex-shrink: 0;
+      margin-top: 2px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-canvas-white);
+    }
+
+    .symptom-chip.is-selected .symptom-box {
+      background-color: var(--color-graphite);
+      color: var(--color-canvas-white);
+    }
+
+    /* =======================================================
+       COMPARISON TABLE
+       ======================================================= */
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--color-mist);
+      border-radius: var(--radius-data);
+      background-color: var(--color-canvas-white);
+    }
+
+    table.editorial-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      text-align: left;
+    }
+
+    table.editorial-table th {
+      font-family: var(--font-polysans);
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: -0.02em;
+      color: var(--color-brass);
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--color-mist);
+      background-color: var(--color-fog);
+    }
+
+    table.editorial-table td {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--color-mist);
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--color-steel);
+      vertical-align: top;
+    }
+
+    table.editorial-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    table.editorial-table td:first-child {
+      font-family: var(--font-polysans);
+      font-size: 16px;
+      letter-spacing: -0.02em;
+      color: var(--color-graphite);
+      width: 19%;
+    }
+
+    /* =======================================================
+       STEP LISTS & FIRST AID
+       ======================================================= */
+    .step-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 16px;
+    }
+
+    .step-item {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--color-mist);
+    }
+
+    .step-item:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .step-num {
+      font-family: var(--font-polysans);
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--color-graphite);
+      color: var(--color-graphite);
+      background-color: var(--color-canvas-white);
+    }
+
+    .step-num--ember {
+      border-color: var(--color-ember-orange);
+      color: var(--color-ember-orange);
+    }
+
+    /* =======================================================
+       OCCLUSIVE DRESSING LAB
+       ======================================================= */
+    .dressing-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    /* =======================================================
+       QUIZ MODULE
+       ======================================================= */
+    .quiz-option {
+      width: 100%;
+      text-align: left;
+      padding: 16px 20px;
+      background-color: var(--color-canvas-white);
+      border: 1px solid var(--color-mist);
+      border-radius: 0px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      min-height: 52px;
+      font-size: 15px;
+      color: var(--color-graphite);
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .quiz-option:hover:not(:disabled) {
+      border-color: var(--color-graphite);
+    }
+
+    .quiz-option.is-correct {
+      background-color: var(--color-ivory);
+      border-color: var(--color-brass);
+    }
+
+    .quiz-option.is-wrong {
+      background-color: var(--color-ember-wash);
+      border-color: var(--color-ember-orange);
+    }
+
+    /* =======================================================
+       EMERGENCY MODAL / CREDITS MODAL
+       ======================================================= */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background-color: rgba(32, 32, 32, 0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop.is-open {
+      display: flex;
+    }
+
+    .modal-panel {
+      background-color: var(--color-canvas-white);
+      border-radius: var(--radius-asymmetric);
+      max-width: 640px;
+      width: 100%;
+      max-height: 88dvh;
+      overflow-y: auto;
+      padding: 36px;
+      border: 1px solid var(--color-mist);
+    }
+
+    /* =======================================================
+       FOOTER & MOBILE STICKY BAR
+       ======================================================= */
+    .site-footer {
+      background-color: var(--color-ash);
+      padding: 64px 0 max(48px, env(safe-area-inset-bottom));
+      border-top: 1px solid var(--color-mist);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 32px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(32, 32, 32, 0.12);
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a, .footer-links button {
+      font-family: var(--font-polysans);
+      font-size: 14px;
+      letter-spacing: -0.02em;
+      color: var(--color-steel);
+      text-decoration: none;
+      background: none;
+      border: none;
+      padding: 2px 0;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .footer-links a:hover, .footer-links button:hover {
+      color: var(--color-graphite);
+    }
+
+    .footer-bottom {
+      padding-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* =======================================================
+       RESPONSIVE BREAKPOINTS (Tablet, iPhone, Mobile, PC)
+       ======================================================= */
+    @media (max-width: 1024px) {
+      .nav-pill {
+        gap: 14px;
+        padding: 8px 14px;
+      }
+      .nav-pill a {
+        font-size: 14px;
+      }
+      .wordmark-sub {
+        display: none;
+      }
+      .hero-grid,
+      .sim-layout,
+      .dressing-grid,
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+      .strip-items {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 820px) {
+      :root {
+        --section-gap: 56px;
+      }
+      .nav-pill, .header-desktop-only {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+      .splash-center {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .splash-authors-card {
+        padding: 28px 24px;
+      }
+      .triage-grid,
+      .grid-2,
+      .grid-3,
+      .hero-cards-bottom {
+        grid-template-columns: 1fr;
+      }
+      .asymmetric-card {
+        padding: 32px 24px;
+      }
+      .data-card {
+        padding: 22px;
+      }
+      .strip-items {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .band-hero {
+        padding-top: 28px;
+        padding-bottom: 40px;
+      }
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      .hero-actions .btn-primary,
+      .hero-actions .btn-ghost {
+        width: 100%;
+      }
+      .sim-tabs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .sim-tabs .btn-tab {
+        width: 100%;
+        font-size: 13px;
+        padding: 10px 10px;
+      }
+      .mobile-nav-grid {
+        grid-template-columns: 1fr;
+      }
+      .modal-panel {
+        padding: 24px 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================
+       ENTRY SPLASH SCREEN (Authors: Андрей Фисталь, Путинцев Савелий)
+       ========================================================= -->
+  <div id="entry-splash" class="entry-splash" role="dialog" aria-modal="true" aria-labelledby="splash-heading">
+    <div class="splash-top">
+      <div class="splash-brand">
+        <span class="eyebrow-dot"></span>
+        <span>ОБЗР · УЧЕБНАЯ ПРЕЗЕНТАЦИЯ И АТЛАС</span>
+      </div>
+      <button type="button" id="splash-skip-top" class="btn-ghost" style="padding: 8px 16px; min-height: 40px; font-size: 14px;">
+        Пропустить →
+      </button>
+    </div>
+
+    <div class="splash-center">
+      <div>
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          <span>Основы безопасности и защиты Родины</span>
+        </div>
+        <h2 id="splash-heading" class="splash-title">Пневмоторакс</h2>
+        <p class="subheading" style="max-width: 520px;">
+          Подробный медицинский разбор: анатомия плевральной полости, виды пневмоторакса, опасные осложнения и точный пошаговый алгоритм первой помощи с интерактивными схемами.
+        </p>
+      </div>
+
+      <div class="splash-authors-card">
+        <div class="eyebrow" style="margin-bottom: 12px;">Над сайтом работали</div>
+        <div class="splash-author-row">
+          <span class="splash-author-name">Андрей Фисталь</span>
+          <span class="splash-author-role">01</span>
+        </div>
+        <div class="splash-author-row">
+          <span class="splash-author-name">Путинцев Савелий</span>
+          <span class="splash-author-role">02</span>
+        </div>
+        <p class="caption" style="margin-top: 18px; color: var(--color-steel);">
+          Нажмите кнопку ниже или дождитесь автоматического перехода к докладу.
+        </p>
+      </div>
+    </div>
+
+    <div class="splash-bottom">
+      <div class="splash-progress-wrap">
+        <span class="caption" id="splash-timer-label" style="white-space: nowrap;">Открытие через 4 с</span>
+        <div class="splash-progress-track">
+          <div id="splash-progress-bar" class="splash-progress-bar"></div>
+        </div>
+      </div>
+      <button type="button" id="splash-enter-btn" class="btn-primary">
+        Перейти к обзору →
+      </button>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       STICKY HEADER
+       ========================================================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="wordmark">
+        <span class="eyebrow-dot"></span>
+        <span>ПНЕВМОТОРАКС</span>
+        <span class="wordmark-sub">ОБЗР · Атлас помощи</span>
+      </a>
+
+      <nav class="nav-pill" aria-label="Основная навигация">
+        <a href="#anatomy">Анатомия</a>
+        <a href="#symptoms">Признаки</a>
+        <a href="#simulator">Симулятор</a>
+        <a href="#types">Виды</a>
+        <a href="#first-aid">Помощь</a>
+        <a href="#quiz">Тест</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" id="open-credits-btn" class="lang-toggle header-desktop-only" title="Создатели проекта">
+          Авторы
+        </button>
+        <button type="button" id="open-emergency-btn" class="btn-primary" style="padding: 10px 16px; min-height: 42px; font-size: 14px;">
+          Памятка 112
+        </button>
+        <button type="button" id="mobile-menu-toggle" class="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-drawer">
+          Меню
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-drawer" class="mobile-drawer">
+      <div class="container" style="padding: 0;">
+        <div class="mobile-nav-grid">
+          <a href="#anatomy" class="mobile-nav-link"><span>01 · Анатомия и физика</span><span>→</span></a>
+          <a href="#symptoms" class="mobile-nav-link"><span>02 · Признаки и триаж</span><span>→</span></a>
+          <a href="#simulator" class="mobile-nav-link"><span>03 · Симулятор дыхания</span><span>→</span></a>
+          <a href="#types" class="mobile-nav-link"><span>04 · Классификация видов</span><span>→</span></a>
+          <a href="#first-aid" class="mobile-nav-link"><span>05 · Алгоритм помощи</span><span>→</span></a>
+          <a href="#dressing-lab" class="mobile-nav-link"><span>06 · Повязка (3 края)</span><span>→</span></a>
+          <a href="#quiz" class="mobile-nav-link"><span>07 · Проверка знаний</span><span>→</span></a>
+          <button type="button" id="mobile-credits-btn" class="mobile-nav-link" style="border: none; cursor: pointer; text-align: left;">
+            <span>Авторы проекта</span><span>↗</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- =========================================================
+         HERO SECTION
+         ========================================================= -->
+    <section class="band-hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>Подробное учебное руководство · Курс ОБЗР</span>
+          </div>
+          <h1 class="hero-title">
+            Пневмоторакс:<br />
+            воздух в груди<br />
+            и первая помощь
+          </h1>
+          <p class="subheading" style="margin-bottom: 18px; max-width: 560px;">
+            <strong style="font-weight: 500; color: var(--color-graphite);">Пневмоторакс</strong> — опасное для жизни состояние, при котором воздух попадает в плевральную полость (пространство между лёгким и грудной стенкой), вызывая спадение лёгкого и острую нехватку кислорода.
+          </p>
+          <p class="caption" style="max-width: 540px; color: var(--color-steel);">
+            Здесь собрано всё: от базовых определений и правил повязки из конспекта до детальной патофизиологии, клапанного механизма, классификации по этиологии и интерактивных тренажёров.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#first-aid" class="btn-primary">Что делать: алгоритмы</a>
+            <a href="#simulator" class="btn-ghost">Интерактивный симулятор</a>
+          </div>
+
+          <a href="#dressing-lab" class="orange-link">
+            <span>Почему один край окклюзионной повязки нельзя заклеивать →</span>
+          </a>
+        </div>
+
+        <!-- Ventriloc 3-Card Data Cluster -->
+        <div class="hero-dashboard-wrap" aria-label="Сводные показатели давления и спадения лёгкого">
+          <div class="data-card" style="padding: 24px 28px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; gap: 12px;">
+              <div>
+                <div class="caption" style="color: var(--color-brass); font-size: 12px; text-transform: uppercase;">Плевральное давление</div>
+                <div style="font-family: var(--font-polysans); font-size: 18px; letter-spacing: -0.02em;">Динамика по циклам дыхания</div>
+              </div>
+              <span class="tag-pill tag-pill--ember">см вод. ст.</span>
+            </div>
+
+            <svg viewBox="0 0 420 135" style="width: 100%; height: auto;" role="img" aria-label="График давления в плевральной полости: норма, закрытый и клапанный пневмоторакс">
+              <!-- Gridlines -->
+              <line x1="36" y1="22" x2="405" y2="22" stroke="#e8e8e8" stroke-dasharray="3 3" />
+              <line x1="36" y1="68" x2="405" y2="68" stroke="#202020" stroke-width="1" stroke-opacity="0.25" />
+              <line x1="36" y1="106" x2="405" y2="106" stroke="#e8e8e8" stroke-dasharray="3 3" />
+              <!-- Labels -->
+              <text x="4" y="26" fill="#ff682c" font-size="10" font-family="Inter, sans-serif">+20</text>
+              <text x="12" y="71" fill="#4d4d4d" font-size="10" font-family="Inter, sans-serif">0</text>
+              <text x="4" y="109" fill="#816729" font-size="10" font-family="Inter, sans-serif">-8</text>
+              <!-- Norm line (Brass) -->
+              <path d="M 40 96 C 95 108, 125 94, 175 104 C 225 112, 265 95, 315 105 C 355 110, 385 96, 402 102"
+                    fill="none" stroke="#816729" stroke-width="2" />
+              <!-- Closed PTX line (Graphite dashed) -->
+              <path d="M 40 92 C 75 74, 105 68, 150 68 L 402 68"
+                    fill="none" stroke="#202020" stroke-width="1.6" stroke-dasharray="5 4" />
+              <!-- Tension PTX line (Ember Orange climbing) -->
+              <path d="M 40 88 C 90 66, 140 58, 190 48 C 240 42, 290 30, 340 24 C 370 20, 388 18, 402 16"
+                    fill="none" stroke="#ff682c" stroke-width="2.4" />
+              <circle cx="402" cy="16" r="4" fill="#ff682c" />
+              <!-- Legend -->
+              <circle cx="48" cy="126" r="3" fill="#816729" />
+              <text x="56" y="130" fill="#4d4d4d" font-size="10.5" font-family="Inter, sans-serif">Норма (-5…-8)</text>
+              <line x1="145" y1="126" x2="160" y2="126" stroke="#202020" stroke-width="1.6" stroke-dasharray="4 3" />
+              <text x="165" y="130" fill="#4d4d4d" font-size="10.5" font-family="Inter, sans-serif">Открытый/закр. (~0)</text>
+              <circle cx="288" cy="126" r="3" fill="#ff682c" />
+              <text x="296" y="130" fill="#ff682c" font-size="10.5" font-family="Inter, sans-serif">Клапанный (+20↑)</text>
+            </svg>
+          </div>
+
+          <div class="hero-cards-bottom">
+            <div class="data-card" style="padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="caption" style="font-size: 12px;">Коллапс лёгкого</span>
+                <svg width="46" height="46" viewBox="0 0 46 46" aria-hidden="true">
+                  <circle cx="23" cy="23" r="18" fill="none" stroke="#efefef" stroke-width="4" />
+                  <circle cx="23" cy="23" r="18" fill="none" stroke="#ff682c" stroke-width="4"
+                          stroke-dasharray="96 113" stroke-linecap="butt" transform="rotate(-90 23 23)" />
+                </svg>
+              </div>
+              <div style="margin-top: 10px;">
+                <div class="metric-number">до 100%</div>
+                <div class="caption" style="font-size: 12.5px;">При тотальном спадении газообмен на поражённой стороне прекращается</div>
+              </div>
+            </div>
+
+            <div class="data-card" style="padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="caption" style="font-size: 12px;">Экстренный вызов</span>
+                <span class="tag-pill tag-pill--brass">ОБЗР</span>
+              </div>
+              <div style="margin-top: 10px;">
+                <div class="metric-number">103 / 112</div>
+                <div class="caption" style="font-size: 12.5px;">Первый обязательный шаг до любых манипуляций с пострадавшим</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         KEY METRICS STRIP (Ventriloc Partner-Style Strip)
+         ========================================================= -->
+    <section class="strip-band" aria-label="Ключевые ориентиры и числа">
+      <div class="container">
+        <div class="strip-caption">КЛЮЧЕВЫЕ ОРИЕНТИРЫ ТЕМЫ · КОНСПЕКТ И КЛИНИЧЕСКАЯ ПРАКТИКА</div>
+        <div class="strip-items">
+          <div>
+            <div class="strip-item-val">–3…–8 см</div>
+            <div class="strip-item-lbl">Отрицательное давление в норме (вод. ст.)</div>
+          </div>
+          <div>
+            <div class="strip-item-val">3 главных</div>
+            <div class="strip-item-lbl">Закрытый, открытый и клапанный типы</div>
+          </div>
+          <div>
+            <div class="strip-item-val">Полусидя</div>
+            <div class="strip-item-lbl">Оптимальная поза для облегчения вдоха</div>
+          </div>
+          <div>
+            <div class="strip-item-val">3 стороны</div>
+            <div class="strip-item-lbl">Закрепить повязку, 1 край оставить свободным</div>
+          </div>
+          <div>
+            <div class="strip-item-val">Квадрат</div>
+            <div class="strip-item-lbl">Или прямоугольник, обязательно больше раны</div>
+          </div>
+          <div>
+            <div class="strip-item-val">На выдохе</div>
+            <div class="strip-item-lbl">Момент наложения герметичной плёнки</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 1: ANATOMY & MECHANISM (Ash Band)
+         ========================================================= -->
+    <section id="anatomy" class="band-ash">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-dot"></span><span>01 · Биомеханика дыхания</span></div>
+            <h2 class="section-title">Как устроена плевральная полость и почему лёгкое спадается</h2>
+          </div>
+          <p class="subheading">
+            У лёгкого нет собственных мышц — оно не умеет раздуваться само. Дыхание работает исключительно за счёт герметичности и вакуума вокруг лёгкого.
+          </p>
+        </div>
+
+        <div class="grid-2" style="align-items: stretch;">
+          <div class="data-card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 20px;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                <h3 class="card-title" style="font-size: 24px;">Схема: Норма против Пневмоторакса</h3>
+                <span class="tag-pill">Анатомия</span>
+              </div>
+              <svg viewBox="0 0 520 310" style="width: 100%; height: auto;" role="img" aria-label="Сравнительная анатомическая схема нормальной половины груди и стороны с пневмотораксом">
+                <!-- Background framing -->
+                <rect x="0" y="0" width="520" height="310" rx="12" fill="#f5f5f5" />
+                <line x1="260" y1="16" x2="260" y2="294" stroke="#e8e8e8" stroke-width="1.5" stroke-dasharray="4 4" />
+
+                <!-- Labels top -->
+                <text x="130" y="28" text-anchor="middle" fill="#816729" font-size="12" font-family="Inter, sans-serif" font-weight="500">НОРМА (ПРАВАЯ СТОРОНА)</text>
+                <text x="390" y="28" text-anchor="middle" fill="#ff682c" font-size="12" font-family="Inter, sans-serif" font-weight="500">ПНЕВМОТОРАКС (КОЛЛАПС)</text>
+
+                <!-- Trachea & Bronchi -->
+                <path d="M 248 38 L 248 92 L 210 120 M 272 38 L 272 92 L 310 120" fill="none" stroke="#202020" stroke-width="2" />
+                <path d="M 248 48 L 272 48 M 248 58 L 272 58 M 248 68 L 272 68 M 248 78 L 272 78" stroke="#828282" stroke-width="1" />
+
+                <!-- LEFT SIDE: NORMAL -->
+                <!-- Chest wall / ribs outer -->
+                <path d="M 225 60 C 165 55, 72 88, 62 195 C 58 232, 85 256, 130 256 C 185 256, 222 240, 232 225 Z"
+                      fill="#ffffff" stroke="#202020" stroke-width="2" />
+                <!-- Parietal pleura -->
+                <path d="M 220 68 C 168 64, 82 95, 72 192 C 69 224, 92 246, 132 246 C 180 246, 215 232, 225 220 Z"
+                      fill="none" stroke="#816729" stroke-width="1.2" stroke-dasharray="3 2" />
+                <!-- Normal Healthy Expanded Lung -->
+                <path d="M 218 72 C 170 68, 88 99, 78 190 C 75 220, 96 242, 133 242 C 178 242, 212 229, 222 216 Z"
+                      fill="#ebe6dd" stroke="#202020" stroke-width="1.6" />
+                <!-- Bronchial tree inside normal lung -->
+                <path d="M 210 120 L 160 140 M 160 140 L 130 120 M 160 140 L 122 176 M 160 140 L 175 198"
+                      fill="none" stroke="#816729" stroke-width="1.4" />
+                <!-- Negative pressure indicator -->
+                <text x="148" y="164" text-anchor="middle" fill="#202020" font-size="13" font-family="Inter, sans-serif" font-weight="500">–5 см H₂O</text>
+                <text x="148" y="181" text-anchor="middle" fill="#4d4d4d" font-size="11" font-family="Inter, sans-serif">Вакуум держит лёгкое</text>
+
+                <!-- RIGHT SIDE: PNEUMOTHORAX -->
+                <!-- Chest wall outer -->
+                <path d="M 295 60 C 355 55, 448 88, 458 195 C 462 232, 435 256, 390 256 C 335 256, 298 240, 288 225 Z"
+                      fill="rgba(255, 104, 44, 0.14)" stroke="#202020" stroke-width="2" />
+                <!-- Wound gap in outer chest wall -->
+                <line x1="448" y1="150" x2="462" y2="164" stroke="#ffffff" stroke-width="8" />
+                <path d="M 432 152 L 468 152 M 468 152 L 456 146 M 468 152 L 456 158" fill="none" stroke="#ff682c" stroke-width="2" />
+                <path d="M 424 162 L 454 162 M 424 162 L 434 157 M 424 162 L 434 167" fill="none" stroke="#ff682c" stroke-width="2" />
+                <!-- Collapsed lung -->
+                <path d="M 304 108 C 325 108, 354 134, 350 185 C 348 206, 326 218, 304 214 C 292 210, 292 128, 304 108 Z"
+                      fill="#ebe6dd" stroke="#202020" stroke-width="1.8" />
+                <text x="320" y="168" text-anchor="middle" fill="#202020" font-size="10.5" font-family="Inter, sans-serif">Сжатое</text>
+                <text x="320" y="180" text-anchor="middle" fill="#202020" font-size="10.5" font-family="Inter, sans-serif">лёгкое</text>
+                <!-- Air pocket label -->
+                <text x="400" y="128" text-anchor="middle" fill="#ff682c" font-size="12" font-family="Inter, sans-serif" font-weight="500">ВОЗДУХ</text>
+                <text x="400" y="143" text-anchor="middle" fill="#ff682c" font-size="10.5" font-family="Inter, sans-serif">P ≥ 0</text>
+                <text x="396" y="212" text-anchor="middle" fill="#4d4d4d" font-size="10.5" font-family="Inter, sans-serif">Плевральная полость</text>
+                <text x="396" y="225" text-anchor="middle" fill="#4d4d4d" font-size="10.5" font-family="Inter, sans-serif">заполнена воздухом</text>
+
+                <!-- Callout Legend Bottom -->
+                <text x="20" y="286" fill="#4d4d4d" font-size="11" font-family="Inter, sans-serif">1. Висцеральная плевра покрывает лёгкое · 2. Париетальная — грудную стенку · 3. Между ними — щель с вакуумом</text>
+              </svg>
+            </div>
+            <p class="caption" style="color: var(--color-steel);">
+              В норме два листка плевры скользят друг по другу, как два мокрых стекла: раздвинуть их почти невозможно. Как только в прослойку проникает воздух, «присасывание» исчезает.
+            </p>
+          </div>
+
+          <div style="display: grid; gap: 20px;">
+            <div class="asymmetric-card asymmetric-card--white" style="padding: 36px 36px 32px;">
+              <div class="eyebrow">Два листка плевры</div>
+              <h3 class="card-title" style="font-size: 24px; margin-bottom: 12px;">Откуда берётся «вакуум»</h3>
+              <p style="font-size: 15px;">
+                Грудная клетка стремится расшириться наружу, а эластичное лёгкое — сжаться внутрь к своему корню. Эти две противоположные силы создают в герметичной полости между париетальным и висцеральным листками <strong style="color: var(--color-graphite); font-weight: 500;">отрицательное давление (от −3 до −8 см вод. ст.)</strong>. Поэтому на вдохе лёгкое послушно тянется за рёбрами и диафрагмой.
+              </p>
+            </div>
+
+            <div class="asymmetric-card asymmetric-card--ivory" style="padding: 36px 36px 32px;">
+              <div class="eyebrow">Цепная реакция катастрофы</div>
+              <h3 class="card-title" style="font-size: 24px; margin-bottom: 12px;">Что происходит при разгерметизации</h3>
+              <ul style="margin: 0; padding-left: 18px; color: var(--color-steel); display: grid; gap: 8px; font-size: 15px;">
+                <li><strong style="color: var(--color-graphite); font-weight: 500;">Выравнивание давления:</strong> воздух устремляется внутрь из атмосферы (через рану) или из просвета бронха (при внутреннем разрыве).</li>
+                <li><strong style="color: var(--color-graphite); font-weight: 500;">Коллапс лёгкого:</strong> без тяги грудной стенки лёгкое сжимается, как спущенный шарик, и перестаёт насыщать кровь кислородом.</li>
+                <li><strong style="color: var(--color-graphite); font-weight: 500;">Удар по сердцу:</strong> при росте давления органы средостения (сердце, аорта, полые вены) смещаются в здоровую сторону — вены перегибаются, кровь не возвращается к сердцу.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 2: SYMPTOMS & INTERACTIVE TRIAGE (White Band)
+         ========================================================= -->
+    <section id="symptoms" class="band-white">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-dot"></span><span>02 · Клиническая картина</span></div>
+            <h2 class="section-title">Признаки пневмоторакса: от базовых до критических</h2>
+          </div>
+          <p class="subheading">
+            Симптомы развиваются внезапно — сразу после травмы, физического усилия, кашля или даже в покое.
+          </p>
+        </div>
+
+        <!-- Direct Notebook Highlight Card -->
+        <div class="asymmetric-card" style="margin-bottom: 28px; padding: 40px 44px;">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px;">
+            <div class="eyebrow" style="margin-bottom: 0;">Ключевые признаки (база из конспекта ОБЗР)</div>
+            <span class="tag-pill tag-pill--ember">Обязательно знать</span>
+          </div>
+          <p style="font-family: var(--font-polysans); font-size: clamp(22px, 2.8vw, 30px); line-height: 1.2; letter-spacing: -0.02em; color: var(--color-graphite);">
+            1. Односторонняя резкая боль в груди (на стороне поражения).<br />
+            2. Одышка, усиливающаяся при вдохе и любом движении.
+          </p>
+        </div>
+
+        <!-- 3-Column Symptom Detail Cards -->
+        <div class="grid-3" style="margin-bottom: 40px;">
+          <div class="data-card data-card--fog">
+            <div class="eyebrow">Ранние жалобы</div>
+            <h3 style="font-size: 22px; margin-bottom: 12px;">Ощущения пострадавшего</h3>
+            <ul style="margin: 0; padding-left: 18px; color: var(--color-steel); font-size: 14.5px; display: grid; gap: 8px;">
+              <li>Внезапная «кинжальная» или колющая боль, отдающая в плечо, ключицу, шею или живот.</li>
+              <li>Мучительный сухой кашель при попытке вдохнуть глубже.</li>
+              <li>Чувство паники, нехватки воздуха, головокружение.</li>
+              <li>Пострадавший инстинктивно прижимает больной бок руками и старается не двигаться.</li>
+            </ul>
+          </div>
+
+          <div class="data-card data-card--fog">
+            <div class="eyebrow">При внешнем осмотре</div>
+            <h3 style="font-size: 22px; margin-bottom: 12px;">Объективные признаки</h3>
+            <ul style="margin: 0; padding-left: 18px; color: var(--color-steel); font-size: 14.5px; display: grid; gap: 8px;">
+              <li>Частое поверхностное дыхание (более 24–30 вдохов/мин).</li>
+              <li>Поражённая половина груди <strong style="color: var(--color-graphite); font-weight: 500;">отстаёт в акте дыхания</strong> или кажется визуально шире.</li>
+              <li>Учащённый слабый пульс (тахикардия 110+ уд/мин), холодный пот.</li>
+              <li>Бледность кожи, синеватый оттенок губ и кончиков пальцев (цианоз).</li>
+            </ul>
+          </div>
+
+          <div class="data-card" style="border-color: var(--color-ember-orange); background-color: var(--color-ember-wash);">
+            <div class="eyebrow" style="color: var(--color-ember-orange);">Красные флаги (Угроза жизни)</div>
+            <h3 style="font-size: 22px; margin-bottom: 12px;">Признаки напряжённого типа</h3>
+            <ul style="margin: 0; padding-left: 18px; color: var(--color-steel); font-size: 14.5px; display: grid; gap: 8px;">
+              <li>Набухание ярёмных вен на шее — кровь не может войти в сердце.</li>
+              <li><strong style="color: var(--color-graphite); font-weight: 500;">Смещение трахеи</strong> (кадыка) в противоположную, здоровую сторону.</li>
+              <li><strong style="color: var(--color-graphite); font-weight: 500;">Подкожная эмфизема:</strong> кожа шеи и груди припухшая, при нажатии ощущается «хруст снега».</li>
+              <li>Резкое падение давления, спутанность или потеря сознания.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Interactive Symptom Triage Widget -->
+        <div class="data-card data-card--ash" style="padding: 36px;">
+          <div style="margin-bottom: 24px;">
+            <div class="eyebrow">Интерактивный чеклист-триаж</div>
+            <h3 class="card-title" style="font-size: 26px;">Определите вероятный вид по наблюдаемой картине</h3>
+            <p class="caption" style="margin-top: 6px; color: var(--color-steel);">Отметьте признаки, которые вы видите у пострадавшего — панель справа обновит оценку риска и первоочередное действие.</p>
+          </div>
+
+          <div class="triage-grid">
+            <div style="display: grid; gap: 10px;" id="symptom-checklist">
+              <button type="button" class="symptom-chip" data-sym="pain">
+                <span class="symptom-box"></span>
+                <span><strong>Резкая боль с одной стороны + одышка на вдохе</strong><br /><span class="caption">Базовый признак разгерметизации плевральной полости</span></span>
+              </button>
+              <button type="button" class="symptom-chip" data-sym="wound">
+                <span class="symptom-box"></span>
+                <span><strong>Есть открытая рана грудной стенки</strong><br /><span class="caption">Виден дефект кожи, пенистая кровь или свист воздуха</span></span>
+              </button>
+              <button type="button" class="symptom-chip" data-sym="nowound">
+                <span class="symptom-box"></span>
+                <span><strong>Кожа груди целая (раны нет)</strong><br /><span class="caption">Боль возникла после удара, падения, кашля или внезапно</span></span>
+              </button>
+              <button type="button" class="symptom-chip" data-sym="tension">
+                <span class="symptom-box"></span>
+                <span><strong>Вены шеи вздуты / трахея смещена / синюшность стремительно растёт</strong><br /><span class="caption">Воздух накапливается и сдавливает сердце</span></span>
+              </button>
+              <button type="button" class="symptom-chip" data-sym="crepitus">
+                <span class="symptom-box"></span>
+                <span><strong>Припухлость шеи и «хруст снега» под кожей</strong><br /><span class="caption">Подкожная эмфизема — выход воздуха в ткани</span></span>
+              </button>
+            </div>
+
+            <div class="data-card" id="triage-output" style="padding: 28px;">
+              <div class="eyebrow" id="triage-badge">Ожидание выбора</div>
+              <h4 id="triage-title" style="font-size: 24px; margin-bottom: 12px;">Выберите признаки слева</h4>
+              <p id="triage-desc" style="font-size: 15px; margin-bottom: 18px;">
+                Отметьте один или несколько симптомов, чтобы увидеть предварительную классификацию и немедленный порядок первой помощи.
+              </p>
+              <div style="padding: 16px; background-color: var(--color-fog); border-left: 2px solid var(--color-ember-orange);">
+                <div class="caption" style="color: var(--color-graphite); font-weight: 500; margin-bottom: 4px;">Приоритетное действие:</div>
+                <div id="triage-action" style="font-size: 14.5px; color: var(--color-steel);">
+                  Вызовите скорую помощь (103 / 112), оцените наличие раны и состояние дыхания.
+                </div>
+              </div>
+              <div style="margin-top: 16px; display: flex; justify-content: flex-end;">
+                <button type="button" id="triage-reset" class="btn-ghost" style="padding: 8px 14px; min-height: 40px; font-size: 13px;">Сбросить выбор</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 3: INTERACTIVE THORACIC SIMULATOR (Ash Band)
+         ========================================================= -->
+    <section id="simulator" class="band-ash">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-dot"></span><span>03 · Интерактивная модель грудной клетки</span></div>
+            <h2 class="section-title">Симулятор дыхания: как ведут себя лёгкие и сердце</h2>
+          </div>
+          <p class="subheading">
+            Переключайте состояния, двигайте фазу дыхания вручную или наблюдайте за автоматическим циклом.
+          </p>
+        </div>
+
+        <div class="sim-tabs" role="tablist" aria-label="Выбор режима пневмоторакса">
+          <button type="button" class="btn-tab is-active" data-mode="normal" role="tab" aria-selected="true">01 · Норма</button>
+          <button type="button" class="btn-tab" data-mode="closed" role="tab" aria-selected="false">02 · Закрытый</button>
+          <button type="button" class="btn-tab" data-mode="open" role="tab" aria-selected="false">03 · Открытый</button>
+          <button type="button" class="btn-tab" data-mode="tension" role="tab" aria-selected="false">04 · Клапанный</button>
+        </div>
+
+        <div class="sim-layout">
+          <!-- Left SVG Interactive Chamber -->
+          <div class="data-card sim-canvas-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+              <div>
+                <div class="caption" id="sim-phase-badge" style="color: var(--color-brass); font-weight: 500;">ФАЗА: ВДОХ</div>
+                <div style="font-family: var(--font-polysans); font-size: 20px; letter-spacing: -0.02em;" id="sim-svg-heading">Нормальное двустороннее дыхание</div>
+              </div>
+              <span class="tag-pill" id="sim-status-tag">Вакуум сохранён</span>
+            </div>
+
+            <svg id="thorax-svg" viewBox="0 0 540 370" style="width: 100%; height: auto; background: #f5f5f5; border-radius: 14px;" role="img" aria-label="Интерактивная динамическая модель грудной клетки при различных видах пневмоторакса">
+              <!-- Subtle coordinate markers -->
+              <text x="16" y="24" fill="#828282" font-size="11" font-family="Inter, sans-serif">ПРАВОЕ (ЗДОРОВОЕ)</text>
+              <text x="524" y="24" text-anchor="end" fill="#828282" font-size="11" font-family="Inter, sans-serif">ЛЕВОЕ (ПОРАЖЁННОЕ)</text>
+
+              <!-- Outer Thoracic Cage -->
+              <path id="sim-cage" d="M 235 45 C 155 45, 55 95, 48 235 C 46 275, 78 302, 145 302 L 395 302 C 462 302, 494 275, 492 235 C 485 95, 385 45, 305 45 Z"
+                    fill="#ffffff" stroke="#202020" stroke-width="2.2" />
+
+              <!-- Ribs subtle lines -->
+              <g stroke="#e8e8e8" stroke-width="1.5" fill="none">
+                <path d="M 80 120 Q 150 112 225 128" />
+                <path d="M 62 165 Q 145 155 225 174" />
+                <path d="M 55 210 Q 145 202 225 220" />
+                <path d="M 460 120 Q 390 112 315 128" />
+                <path d="M 478 165 Q 395 155 315 174" />
+                <path d="M 485 210 Q 395 202 315 220" />
+              </g>
+
+              <!-- Left (affected) Pleural Air Fill — behind collapsed lung -->
+              <path id="sim-air-pocket" d="M 305 56 C 378 58, 474 102, 480 232 C 482 268, 456 290, 395 290 L 302 290 Z"
+                    fill="rgba(255, 104, 44, 0)" stroke="none" />
+
+              <!-- Right Healthy Lung (animated expand/contract) -->
+              <g id="sim-right-lung-group" transform="translate(0,0) scale(1)">
+                <path id="sim-right-lung" d="M 232 62 C 168 62, 74 108, 68 232 C 66 266, 94 282, 146 282 C 198 282, 230 264, 236 244 Z"
+                      fill="#ebe6dd" stroke="#202020" stroke-width="1.8" />
+                <path d="M 232 135 L 170 158 M 170 158 L 136 136 M 170 158 L 128 198 M 170 158 L 190 226"
+                      fill="none" stroke="#816729" stroke-width="1.3" />
+              </g>
+
+              <!-- Left Affected Lung (scales/collapses dynamically) -->
+              <g id="sim-left-lung-group">
+                <path id="sim-left-lung" d="M 308 62 C 372 62, 466 108, 472 232 C 474 266, 446 282, 394 282 C 342 282, 310 264, 304 244 Z"
+                      fill="#ebe6dd" stroke="#202020" stroke-width="1.8" />
+                <path d="M 308 135 L 370 158 M 370 158 L 404 136 M 370 158 L 412 198 M 370 158 L 350 226"
+                      fill="none" stroke="#816729" stroke-width="1.3" />
+              </g>
+
+              <!-- Trachea + Mediastinum + Heart (shifts horizontally!) -->
+              <g id="sim-mediastinum">
+                <!-- Trachea -->
+                <rect x="261" y="18" width="18" height="106" fill="#ffffff" stroke="#202020" stroke-width="2" />
+                <path d="M 261 36 L 279 36 M 261 52 L 279 52 M 261 68 L 279 68 M 261 84 L 279 84 M 261 100 L 279 100" stroke="#828282" stroke-width="1" />
+                <!-- Main Bronchi -->
+                <path d="M 261 124 L 234 142 M 279 124 L 306 142" stroke="#202020" stroke-width="4" stroke-linecap="round" />
+                <!-- Heart silhouette -->
+                <path d="M 268 175 C 242 175, 232 204, 240 234 C 247 260, 270 278, 294 268 C 314 259, 316 218, 298 190 C 289 177, 279 175, 268 175 Z"
+                      fill="#ffffff" stroke="#202020" stroke-width="2" />
+                <text x="274" y="228" text-anchor="middle" fill="#4d4d4d" font-size="10.5" font-family="Inter, sans-serif">СЕРДЦЕ</text>
+              </g>
+
+              <!-- Diaphragm -->
+              <path id="sim-diaphragm" d="M 52 292 Q 160 258, 270 278 Q 380 258, 488 292"
+                    fill="none" stroke="#202020" stroke-width="3" stroke-linecap="round" />
+
+              <!-- Chest Wall Wound & Valve Visuals (shown in Open / Tension) -->
+              <g id="sim-wound-group" style="display: none;">
+                <!-- Break in wall -->
+                <line x1="478" y1="166" x2="492" y2="188" stroke="#ffffff" stroke-width="11" />
+                <line x1="478" y1="165" x2="494" y2="165" stroke="#ff682c" stroke-width="2.5" />
+                <line x1="478" y1="189" x2="494" y2="189" stroke="#ff682c" stroke-width="2.5" />
+                <!-- Tissue flap for Tension valve -->
+                <path id="sim-valve-flap" d="M 480 166 L 464 185" stroke="#ff682c" stroke-width="3.2" stroke-linecap="round" style="display: none;" />
+                <!-- Air arrows -->
+                <g id="sim-arrows-in">
+                  <path d="M 526 177 L 444 177 M 444 177 L 456 171 M 444 177 L 456 183" fill="none" stroke="#ff682c" stroke-width="2.4" />
+                  <text x="510" y="156" text-anchor="end" fill="#ff682c" font-size="11" font-family="Inter, sans-serif" font-weight="500">Воздух входит</text>
+                </g>
+                <g id="sim-arrows-out" style="display: none;">
+                  <path d="M 444 177 L 526 177 M 526 177 L 514 171 M 526 177 L 514 183" fill="none" stroke="#816729" stroke-width="2.4" />
+                  <text x="518" y="156" text-anchor="end" fill="#816729" font-size="11" font-family="Inter, sans-serif" font-weight="500">Выходит наружу</text>
+                </g>
+                <g id="sim-arrows-blocked" style="display: none;">
+                  <line x1="464" y1="166" x2="464" y2="188" stroke="#ff682c" stroke-width="3" />
+                  <text x="524" y="156" text-anchor="end" fill="#ff682c" font-size="11" font-family="Inter, sans-serif" font-weight="500">Клапан закрыт!</text>
+                </g>
+              </g>
+
+              <!-- Floating Pleural Text Label -->
+              <text id="sim-air-label" x="430" y="246" text-anchor="middle" fill="#ff682c" font-size="12" font-family="Inter, sans-serif" font-weight="500" style="display: none;">
+                ВОЗДУХ В ПОЛОСТИ
+              </text>
+
+              <!-- Bottom Legend -->
+              <text x="270" y="346" text-anchor="middle" fill="#4d4d4d" font-size="11.5" font-family="Inter, sans-serif" id="sim-svg-footer">
+                Бежевый — лёгочная ткань · Оранжевый — воздух в плевральной полости · Трахея по центру
+              </text>
+            </svg>
+
+            <div class="sim-controls-bar">
+              <button type="button" id="sim-play-btn" class="btn-primary" style="padding: 10px 16px; min-height: 42px; font-size: 14px;">
+                Пауза цикла
+              </button>
+              <div class="range-wrap">
+                <span class="caption" style="white-space: nowrap;">Выдох</span>
+                <input type="range" id="sim-cycle-slider" min="0" max="100" value="50" aria-label="Фаза дыхательного цикла" />
+                <span class="caption" style="white-space: nowrap;">Вдох</span>
+              </div>
+              <button type="button" id="sim-step-inhale" class="btn-ghost" style="padding: 8px 12px; min-height: 40px; font-size: 13px;">Вдох</button>
+              <button type="button" id="sim-step-exhale" class="btn-ghost" style="padding: 8px 12px; min-height: 40px; font-size: 13px;">Выдох</button>
+            </div>
+          </div>
+
+          <!-- Right Telemetry & Explanation Card -->
+          <div class="data-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="eyebrow" id="sim-tel-eyebrow">Состояние 01</div>
+              <h3 class="card-title" id="sim-tel-title" style="margin-bottom: 12px;">Физиологическая норма</h3>
+              <p id="sim-tel-desc" style="font-size: 15px; margin-bottom: 18px;">
+                Плевральная полость герметична. Отрицательное давление притягивает оба лёгких к грудной стенке. На вдохе диафрагма опускается, грудная клетка расширяется, лёгкие равномерно наполняются воздухом.
+              </p>
+
+              <div class="telemetry-list">
+                <div class="telemetry-row">
+                  <span class="caption">Давление в полости</span>
+                  <span class="telemetry-val is-brass" id="tel-pressure">–5…–8 см H₂O</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="caption">Спадение левого лёгкого</span>
+                  <span class="telemetry-val" id="tel-collapse">0%</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="caption">Средостение и трахея</span>
+                  <span class="telemetry-val" id="tel-shift">Строго по центру</span>
+                </div>
+                <div class="telemetry-row">
+                  <span class="caption">Сообщение с атмосферой</span>
+                  <span class="telemetry-val" id="tel-comm">Отсутствует (герметично)</span>
+                </div>
+                <div class="telemetry-row" style="border-bottom: none; padding-bottom: 0;">
+                  <span class="caption">Опасность для жизни</span>
+                  <span class="telemetry-val is-brass" id="tel-risk">Нет</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="background-color: var(--color-ivory); border-radius: var(--radius-asymmetric); padding: 20px 22px; margin-top: 16px;">
+              <div class="caption" style="color: var(--color-brass); font-weight: 500; margin-bottom: 4px;">Тактика в этом режиме:</div>
+              <div id="tel-tactic" style="font-size: 14.5px; color: var(--color-graphite);">
+                Экстренная помощь не требуется. Используйте кнопки выше для сравнения патологических состояний.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 4: DETAILED CLASSIFICATION OF TYPES (White Band)
+         ========================================================= -->
+    <section id="types" class="band-white">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-dot"></span><span>04 · Полная классификация</span></div>
+            <h2 class="section-title">Виды пневмоторакса: клиническая, по причине и по объёму</h2>
+          </div>
+          <p class="subheading">
+            Врачи и спасатели оценивают пневмоторакс сразу по трём осям: связь с внешней средой, причина возникновения и степень сжатия лёгкого.
+          </p>
+        </div>
+
+        <!-- A. 3 Primary Clinical Forms -->
+        <div class="eyebrow" style="margin-bottom: 14px;">А · По сообщению с внешней средой (главные виды)</div>
+        <div class="grid-3" style="margin-bottom: 40px;">
+          <article class="asymmetric-card" style="padding: 36px 30px 32px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <span class="tag-pill" style="background: var(--color-canvas-white);">Вид 01</span>
+                <span class="caption" style="color: var(--color-brass);">Умеренный риск</span>
+              </div>
+              <h3 style="font-size: 26px; margin-bottom: 12px;">Закрытый</h3>
+              <p style="font-size: 14.5px; margin-bottom: 14px;">
+                <strong style="color: var(--color-graphite); font-weight: 500;">Отсутствует сообщение</strong> между плевральной полостью и атмосферой — <strong style="color: var(--color-graphite); font-weight: 500;">нет открытой раны</strong> грудной стенки.
+              </p>
+              <p style="font-size: 14px; color: var(--color-steel);">
+                Воздух проникает одномоментно (чаще через разрыв участка лёгкого при закрытом переломе ребра или спонтанно) и больше не поступает. Объём воздуха стабилен.
+              </p>
+            </div>
+            <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(32,32,32,0.1);">
+              <span class="caption" style="color: var(--color-graphite);">Прогноз: наименее опасен при малом объёме, но требует вызова скорой и наблюдения.</span>
+            </div>
+          </article>
+
+          <article class="asymmetric-card" style="padding: 36px 30px 32px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <span class="tag-pill" style="background: var(--color-canvas-white);">Вид 02</span>
+                <span class="caption" style="color: var(--color-ember-orange);">Высокий риск</span>
+              </div>
+              <h3 style="font-size: 26px; margin-bottom: 12px;">Открытый</h3>
+              <p style="font-size: 14.5px; margin-bottom: 14px;">
+                <strong style="color: var(--color-graphite); font-weight: 500;">Есть сквозная рана</strong> грудной стенки: воздух свободно <strong style="color: var(--color-graphite); font-weight: 500;">входит и выходит из раны</strong> при каждом вдохе и выдохе.
+              </p>
+              <p style="font-size: 14px; color: var(--color-steel);">
+                Слышен характерный свист или «присасывание», может пузыриться кровь. Сердце и сосуды маятникообразно раскачиваются (баллотирование средостения), быстро развивается шок.
+              </p>
+            </div>
+            <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(32,32,32,0.1);">
+              <span class="caption" style="color: var(--color-graphite);">Первое действие: немедленно наложить окклюзионную повязку (3 края заклеить).</span>
+            </div>
+          </article>
+
+          <article class="asymmetric-card asymmetric-card--ivory" style="padding: 36px 30px 32px; display: flex; flex-direction: column; justify-content: space-between; border-left: 3px solid var(--color-ember-orange);">
+            <div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <span class="tag-pill tag-pill--ember">Вид 03</span>
+                <span class="caption" style="color: var(--color-ember-orange); font-weight: 500;">Смертельная угроза</span>
+              </div>
+              <h3 style="font-size: 26px; margin-bottom: 12px;">Клапанный (напряжённый)</h3>
+              <p style="font-size: 14.5px; margin-bottom: 14px;">
+                Раневой или лёгочный лоскут работает как <strong style="color: var(--color-graphite); font-weight: 500;">односторонний ниппель</strong>: на вдохе воздух засасывается в полость, на выдохе выход захлопывается.
+              </p>
+              <p style="font-size: 14px; color: var(--color-steel);">
+                С каждым вдохом давление растёт выше атмосферного (+15…+30 см вод. ст.). Лёгкое полностью раздавлено, сердце смещено в здоровый бок, полые вены пережаты.
+              </p>
+            </div>
+            <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(32,32,32,0.1);">
+              <span class="caption" style="color: var(--color-ember-orange); font-weight: 500;">Без декомпрессии (пункции) врачом смерть может наступить за минуты.</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- B. Etiology & Volume -->
+        <div class="grid-2" style="margin-bottom: 40px;">
+          <div class="data-card data-card--fog">
+            <div class="eyebrow">Б · По причине возникновения (этиологии)</div>
+            <h3 style="font-size: 24px; margin-bottom: 16px;">Откуда появляется воздух</h3>
+            <div style="display: grid; gap: 14px; font-size: 14.5px;">
+              <div style="padding-bottom: 12px; border-bottom: 1px solid var(--color-mist);">
+                <strong style="color: var(--color-graphite); font-weight: 500;">1. Спонтанный первичный</strong> — без предшествующей травмы и болезней. Возникает из-за разрыва врождённых или связанных с курением тонкостенных воздушных пузырьков на верхушке лёгкого (булл). Типично для высоких худощавых молодых людей 18–35 лет, при нырянии или авиаперелёте.
+              </div>
+              <div style="padding-bottom: 12px; border-bottom: 1px solid var(--color-mist);">
+                <strong style="color: var(--color-graphite); font-weight: 500;">2. Спонтанный вторичный</strong> — осложнение хронических заболеваний лёгких: ХОБЛ, эмфизема, туберкулёз, тяжёлая пневмония, абсцесс лёгкого, бронхиальная астма. Протекает тяжелее из-за сниженного резерва лёгких.
+              </div>
+              <div style="padding-bottom: 12px; border-bottom: 1px solid var(--color-mist);">
+                <strong style="color: var(--color-graphite); font-weight: 500;">3. Травматический</strong> — проникающие ранения груди (ножевые, осколочные, огнестрельные) или закрытые удары при ДТП, падении с высоты, сдавлении, когда острый отломок ребра пробивает лёгкое.
+              </div>
+              <div>
+                <strong style="color: var(--color-graphite); font-weight: 500;">4. Ятрогенный (медицинский)</strong> — редкое осложнение врачебных манипуляций: пункции плевры, биопсии лёгкого, установки катетера в подключичную вену, избыточного давления при искусственной вентиляции лёгких (баротравма).
+              </div>
+            </div>
+          </div>
+
+          <div class="data-card data-card--fog">
+            <div class="eyebrow">В · По объёму и распространённости</div>
+            <h3 style="font-size: 24px; margin-bottom: 16px;">Степень спадения лёгкого</h3>
+            <div style="display: grid; gap: 14px; font-size: 14.5px; margin-bottom: 20px;">
+              <div style="padding-bottom: 12px; border-bottom: 1px solid var(--color-mist);">
+                <strong style="color: var(--color-graphite); font-weight: 500;">Малый (частичный):</strong> лёгкое сжато не более чем на 1/3 (до 20–30%). Одышка умеренная, при закрытом типе воздух может рассосаться за несколько дней под контролем врача.
+              </div>
+              <div style="padding-bottom: 12px; border-bottom: 1px solid var(--color-mist);">
+                <strong style="color: var(--color-graphite); font-weight: 500;">Средний:</strong> спадение на 1/3 – 1/2 объёма лёгкого. Выраженная одышка и боль, требуется дренирование.
+              </div>
+              <div>
+                <strong style="color: var(--color-graphite); font-weight: 500;">Большой (тотальный):</strong> лёгкое сжато более чем наполовину, вплоть до плотного безвоздушного комка у корня лёгкого.
+              </div>
+            </div>
+            <div style="background-color: var(--color-canvas-white); border: 1px solid var(--color-mist); border-radius: 12px; padding: 16px;">
+              <div class="caption" style="color: var(--color-brass); font-weight: 500; margin-bottom: 4px;">Односторонний vs Двусторонний</div>
+              <p style="font-size: 14px;">
+                В 95% случаев поражается одна сторона. <strong style="color: var(--color-graphite); font-weight: 500;">Двусторонний</strong> пневмоторакс выключает сразу оба лёгких и вызывает мгновенную острую асфиксию. При одновременном скоплении крови в полости развивается <strong style="color: var(--color-graphite); font-weight: 500;">гемопневмоторакс</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="eyebrow" style="margin-bottom: 12px;">Сводная таблица отличий</div>
+        <div class="table-scroll">
+          <table class="editorial-table">
+            <thead>
+              <tr>
+                <th>Критерий</th>
+                <th>Закрытый</th>
+                <th>Открытый</th>
+                <th>Клапанный (напряжённый)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Рана грудной стенки</td>
+                <td>Отсутствует. Кожа не повреждена (или рана не проникает в плевру).</td>
+                <td>Есть сквозная зияющая рана. Воздух свободно ходит туда и обратно.</td>
+                <td>Либо косая лоскутная рана, либо внутренний разрыв бронха/лёгкого, либо глухая повязка.</td>
+              </tr>
+              <tr>
+                <td>Давление в полости</td>
+                <td>Выравнивается до ~0 или чуть отрицательное; не растёт.</td>
+                <td>Равно атмосферному (~0 см вод. ст.), колеблется при дыхании.</td>
+                <td>Положительное (+15…+30 см вод. ст.), неуклонно растёт с каждым вдохом.</td>
+              </tr>
+              <tr>
+                <td>Звук и внешние признаки</td>
+                <td>Тихо, без звуков извне. Боль, одышка, отставание груди при вдохе.</td>
+                <td>Свист/хлюпанье воздуха в ране, пузырение алой крови на выдохе.</td>
+                <td>Набухание вен шеи, смещение трахеи, подкожная эмфизема («хруст»), резкий цианоз.</td>
+              </tr>
+              <tr>
+                <td>Смещение сердца</td>
+                <td>Отсутствует или минимальное.</td>
+                <td>Баллотирование (раскачивание в такт вдоху и выдоху).</td>
+                <td>Выраженное стойкое смещение в здоровую сторону + сдавление полых вен.</td>
+              </tr>
+              <tr>
+                <td>Главное действие до врача</td>
+                <td>103/112, свежий воздух, расстегнуть воротник/ремень, полусидя, наблюдение.</td>
+                <td>103/112, полусидя, наложить окклюзионную повязку с 1 свободным краем.</td>
+                <td>Экстренно 103/112! Если есть глухая повязка — приоткрыть край. Нужна пункция врача.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 5: FIRST AID ALGORITHMS & DRESSING LAB (Ash Band)
+         ========================================================= -->
+    <section id="first-aid" class="band-ash">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-dot"></span><span>05 · Что делать</span></div>
+            <h2 class="section-title">Пошаговые алгоритмы первой помощи</h2>
+          </div>
+          <p class="subheading">
+            Тактика критически зависит от того, есть ли открытая рана грудной клетки и нет ли признаков клапанного сдавления.
+          </p>
+        </div>
+
+        <div class="grid-2" style="margin-bottom: 40px;">
+          <!-- Closed Pneumothorax First Aid -->
+          <div class="data-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; gap: 10px;">
+              <div>
+                <div class="eyebrow" style="margin-bottom: 4px;">Алгоритм 01</div>
+                <h3 style="font-size: 26px;">При закрытом пневмотораксе</h3>
+              </div>
+              <span class="tag-pill">Нет раны</span>
+            </div>
+
+            <ol class="step-list">
+              <li class="step-item">
+                <span class="step-num">01</span>
+                <div>
+                  <strong style="color: var(--color-graphite); font-weight: 500;">Вызвать скорую медицинскую помощь (103 / 112)</strong>
+                  <p style="font-size: 14px; margin-top: 4px;">Чётко назовите адрес, скажите про резкую одностороннюю боль в груди, одышку и возможный пневмоторакс.</p>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num">02</span>
+                <div>
+                  <strong style="color: var(--color-graphite); font-weight: 500;">Обеспечить приток свежего воздуха и свободу дыхания</strong>
+                  <p style="font-size: 14px; margin-top: 4px;">Откройте окно (или выведите/вынесите из тесного душного помещения), обязательно <strong style="color: var(--color-graphite); font-weight: 500;">расстегните ремень, воротник, пуговицы рубашки, снимите галстук</strong> и любую стесняющую одежду.</p>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num">03</span>
+                <div>
+                  <strong style="color: var(--color-graphite); font-weight: 500;">Придать полусидячее положение</strong>
+                  <p style="font-size: 14px; margin-top: 4px;">Усадите человека полусидя с надёжной опорой под спину (~45°) и слегка согнутыми коленями. В такой позе диафрагме легче опускаться вниз. <em>Если пострадавший без сознания — уложите в устойчивое боковое положение на поражённый бок (чтобы здоровое лёгкое свободно дышало).</em></p>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num">04</span>
+                <div>
+                  <strong style="color: var(--color-graphite); font-weight: 500;">Обеспечить покой и успокоить</strong>
+                  <p style="font-size: 14px; margin-top: 4px;">Запретите человеку ходить, разговаривать длинными фразами и наклоняться. Паника учащает дыхание и повышает потребность в кислороде.</p>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num">05</span>
+                <div>
+                  <strong style="color: var(--color-graphite); font-weight: 500;">Постоянно проверять состояние до приезда скорой</strong>
+                  <p style="font-size: 14px; margin-top: 4px;">Контролируйте сознание, частоту дыхания, пульс, цвет губ и не надуваются ли вены на шее (проверка, не переходит ли в клапанный).</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Open Pneumothorax First Aid -->
+          <div class="data-card" style="border-color: var(--color-ember-orange);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; gap: 10px;">
+              <div>
+                <div class="eyebrow" style="margin-bottom: 4px; color: var(--color-ember-orange);">Алгоритм 02</div>
+                <h3 style="font-size: 26px;">При открытом пневмотораксе</h3>
+              </div>
+              <span class="tag-pill tag-pill--ember">Есть рана</span>
+            </div>
+
+            <ol class="step-list">
+              <li class="step-item">
+                <span class="step-num step-num--ember">01</span>
+                <div>
+                  <strong style="color: var(--color-graphite); font-weight: 500;">Вызвать скорую (103 / 112) и надеть перчатки</strong>
+                  <p style="font-size: 14px; margin-top: 4px;">Позаботьтесь о собственной безопасности при контакте с кровью. Временно прикрыть свистящую рану можно даже ладонью в перчатке на выдохе до подготовки повязки.</p>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num step-num--ember">02</span>
+                <div>
+                  <strong style="color: var(--color-graphite); font-weight: 500;">Полусидячее положение, расстегнуть ремень и воротник</strong>
+                  <p style="font-size: 14px; margin-top: 4px;">Обеспечить приток свежего воздуха, освободить грудную клетку от одежды вокруг раны (лучше разрезать, не стягивая через голову).</p>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num step-num--ember">03</span>
+                <div>
+                  <strong style="color: var(--color-graphite); font-weight: 500;">Наложить окклюзионную (герметичную) повязку на выдохе</strong>
+                  <p style="font-size: 14px; margin-top: 4px;">Материалы: <strong style="color: var(--color-graphite); font-weight: 500;">целлофан, плотный полиэтиленовый пакет, герметичная плёнка</strong> (или стерильная внутренняя обёртка ИПП). Форма — <strong style="color: var(--color-graphite); font-weight: 500;">квадратная или прямоугольная, обязательно больше раны</strong> (запас минимум 3–5 см по краям). Попросите пострадавшего сделать глубокий выдох и наложите плёнку.</p>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num step-num--ember">04</span>
+                <div>
+                  <strong style="color: var(--color-graphite); font-weight: 500;">Закрепить пластырем, бинтом или клейкой лентой — НО ОДИН КРАЙ НЕ ЗАКЛЕИВАТЬ!</strong>
+                  <p style="font-size: 14px; margin-top: 4px;">Проклеиваются верхний, левый и правый края. <strong style="color: var(--color-ember-orange); font-weight: 500;">Нижний край остаётся свободным</strong> (работает как односторонний клапан наружу). Если фиксируете бинтом сверху — не пережимайте незаклеенный край.</p>
+                </div>
+              </li>
+              <li class="step-item">
+                <span class="step-num step-num--ember">05</span>
+                <div>
+                  <strong style="color: var(--color-graphite); font-weight: 500;">Наблюдать за дыханием после герметизации</strong>
+                  <p style="font-size: 14px; margin-top: 4px;">Если после наложения повязки одышка и синюшность резко усилились — немедленно приподнимите повязку на выдохе («разгерметизируйте» на 1–2 секунды), чтобы выпустить скопившийся воздух.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             INTERACTIVE OCCLUSIVE DRESSING LAB (Правило 3 сторон)
+             ========================================================= -->
+        <div id="dressing-lab" class="data-card" style="padding: 36px; margin-bottom: 40px;">
+          <div class="dressing-grid">
+            <div>
+              <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 14px;">
+                <div>
+                  <div class="eyebrow" style="margin-bottom: 4px;">Интерактивная лаборатория · Схема повязки</div>
+                  <h3 style="font-size: 26px;">Почему один край не заклеивают</h3>
+                </div>
+                <span class="tag-pill tag-pill--ember" id="dress-badge">Верный вариант</span>
+              </div>
+
+              <div class="sim-tabs" style="margin-bottom: 16px;">
+                <button type="button" class="btn-tab" data-dress="none">Без повязки</button>
+                <button type="button" class="btn-tab" data-dress="four">Ошибка: все 4 края</button>
+                <button type="button" class="btn-tab is-active" data-dress="three">Верно: 3 края (клапан)</button>
+              </div>
+
+              <svg id="dressing-svg" viewBox="0 0 500 280" style="width: 100%; height: auto; background: #f5f5f5; border-radius: 14px;" role="img" aria-label="Схема работы окклюзионной повязки с тремя заклеенными сторонами">
+                <!-- Chest cross-section / skin surface representation -->
+                <!-- Skin layer -->
+                <rect x="30" y="30" width="440" height="220" rx="12" fill="#ebe6dd" stroke="#202020" stroke-width="1.5" />
+                <text x="48" y="54" fill="#816729" font-size="11" font-family="Inter, sans-serif" font-weight="500">ПОВЕРХНОСТЬ ГРУДНОЙ КЛЕТКИ (ВИД СПЕРЕДИ)</text>
+
+                <!-- Wound center -->
+                <ellipse cx="250" cy="145" rx="34" ry="18" fill="#202020" />
+                <ellipse cx="250" cy="145" rx="26" ry="11" fill="#ff682c" fill-opacity="0.7" />
+                <text x="250" y="149" text-anchor="middle" fill="#ffffff" font-size="10.5" font-family="Inter, sans-serif" font-weight="500">РАНА</text>
+
+                <!-- Plastic square/rectangle larger than wound -->
+                <g id="dress-patch-group">
+                  <rect x="165" y="80" width="170" height="130" fill="rgba(255, 255, 255, 0.78)" stroke="#202020" stroke-width="1.8" stroke-dasharray="5 3" />
+                  <text x="250" y="99" text-anchor="middle" fill="#202020" font-size="10.5" font-family="Inter, sans-serif" font-weight="500">ПЛЁНКА / ЦЕЛЛОФАН (БОЛЬШЕ РАНЫ)</text>
+
+                  <!-- Top tape -->
+                  <rect id="tape-top" x="150" y="70" width="200" height="16" fill="#202020" />
+                  <!-- Left tape -->
+                  <rect id="tape-left" x="153" y="76" width="16" height="138" fill="#202020" />
+                  <!-- Right tape -->
+                  <rect id="tape-right" x="331" y="76" width="16" height="138" fill="#202020" />
+                  <!-- Bottom tape (only in 'four' mode!) -->
+                  <rect id="tape-bottom" x="150" y="204" width="200" height="16" fill="#ff682c" style="display: none;" />
+                </g>
+
+                <!-- Bottom unsealed edge callout (in 'three' mode) -->
+                <g id="dress-unsealed-note">
+                  <line x1="172" y1="210" x2="328" y2="210" stroke="#816729" stroke-width="2.5" stroke-dasharray="6 4" />
+                  <text x="250" y="232" text-anchor="middle" fill="#816729" font-size="11.5" font-family="Inter, sans-serif" font-weight="500">ОДИН КРАЙ НЕ ЗАКЛЕЕН — КЛАПАН ВЫХОДА</text>
+                </g>
+
+                <!-- Dynamic Flow Indicators -->
+                <g id="dress-flow-arrows"></g>
+              </svg>
+
+              <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px;">
+                <button type="button" id="dress-inhale-btn" class="btn-primary" style="padding: 10px 18px; min-height: 42px; font-size: 14px;">Показать на ВДОХЕ</button>
+                <button type="button" id="dress-exhale-btn" class="btn-ghost" style="padding: 10px 18px; min-height: 42px; font-size: 14px;">Показать на ВЫДОХЕ</button>
+              </div>
+            </div>
+
+            <div style="display: grid; gap: 18px;">
+              <div class="asymmetric-card asymmetric-card--ivory" style="padding: 32px 28px;">
+                <div class="eyebrow" style="margin-bottom: 8px;">Физика действия</div>
+                <h4 id="dress-info-title" style="font-size: 22px; margin-bottom: 10px;">На вдохе — закрыто, на выдохе — сброс воздуха</h4>
+                <p id="dress-info-text" style="font-size: 14.5px; line-height: 1.55;">
+                  Когда человек делает <strong>вдох</strong>, в грудной клетке возникает втягивающее движение — полиэтиленовая плёнка плотно присасывается к коже и перекрывает вход воздуху снаружи. На <strong>выдохе</strong> избыточный воздух или кровь из полости свободно выходят из-под нижнего незаклеенного края, не превращая травму в смертельный клапанный пневмоторакс.
+                </p>
+              </div>
+
+              <div class="data-card data-card--fog" style="padding: 24px;">
+                <div class="eyebrow" style="margin-bottom: 8px;">Требования к повязке (из конспекта)</div>
+                <ul style="margin: 0; padding-left: 18px; font-size: 14px; color: var(--color-steel); display: grid; gap: 6px;">
+                  <li><strong style="color: var(--color-graphite); font-weight: 500;">Материал:</strong> целлофан, полиэтиленовый пакет, герметичная плёнка, прорезиненная оболочка ИПП.</li>
+                  <li><strong style="color: var(--color-graphite); font-weight: 500;">Форма и размер:</strong> квадратная или прямоугольная, строго <em>больше</em> размеров раны.</li>
+                  <li><strong style="color: var(--color-graphite); font-weight: 500;">Фиксация:</strong> пластырь, бинт, клейкая лента (скотч) по трём краям; <strong style="color: var(--color-ember-orange); font-weight: 500;">один край не заклеивать</strong>.</li>
+                  <li><strong style="color: var(--color-graphite); font-weight: 500;">Стерильность:</strong> если есть стерильный бинт/салфетка и негерметичная ткань — салфетку кладут под плёнку только если она не мешает герметизации краёв по коже.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prohibitions + Medical Hospital Care -->
+        <div class="grid-2">
+          <div class="data-card" style="border-left: 3px solid var(--color-ember-orange);">
+            <div class="eyebrow" style="color: var(--color-ember-orange);">Категорически запрещено</div>
+            <h3 style="font-size: 24px; margin-bottom: 14px;">6 опасных ошибок, которые убивают</h3>
+            <ul style="margin: 0; padding-left: 18px; color: var(--color-steel); font-size: 14.5px; display: grid; gap: 10px;">
+              <li><strong style="color: var(--color-graphite); font-weight: 500;">Не вытаскивать торчащие предметы!</strong> Нож, арматура или осколок могут затыкать крупный сосуд. Извлечение вызовет мгновенное смертельное кровотечение и свищ. Обложите предмет валиками из бинта и зафиксируйте.</li>
+              <li><strong style="color: var(--color-graphite); font-weight: 500;">Не промывать проникающую рану груди</strong> водой или перекисью и не запихивать внутрь тампоны/вату.</li>
+              <li><strong style="color: var(--color-graphite); font-weight: 500;">Не укладывать пострадавшего в сознании горизонтально</strong> на спину или с опущенным изголовьем — диафрагма подопрёт здоровое лёгкое.</li>
+              <li><strong style="color: var(--color-graphite); font-weight: 500;">Не заклеивать 4-й край</strong>, если есть риск повреждения самого лёгкого и нет возможности контролировать давление.</li>
+              <li><strong style="color: var(--color-graphite); font-weight: 500;">Не давать пить, есть и сильные обезболивающие</strong> до осмотра хирурга (смазывают картину и опасны при наркозе).</li>
+              <li><strong style="color: var(--color-graphite); font-weight: 500;">Не оставлять человека одного</strong> ни на минуту — состояние может ухудшиться за секунды.</li>
+            </ul>
+          </div>
+
+          <div class="data-card">
+            <div class="eyebrow">Дальнейшее лечение</div>
+            <h3 style="font-size: 24px; margin-bottom: 14px;">Что делают врачи скорой и в больнице</h3>
+            <div style="display: grid; gap: 12px; font-size: 14.5px; color: var(--color-steel);">
+              <p><strong style="color: var(--color-graphite); font-weight: 500;">1. Экстренная декомпрессия (пункция):</strong> при клапанном типе врач немедленно прокалывает грудную стенку толстой иглой (во 2-м межреберье по среднеключичной линии по верхнему краю ребра), чтобы мгновенно сбросить избыточное давление.</p>
+              <p><strong style="color: var(--color-graphite); font-weight: 500;">2. Дренирование по Бюлау:</strong> в плевральную полость ставят трубку, другой конец которой опущен в банку с жидкостью (водяной замок) или подключён к отсосу. Воздух выходит пузырьками, а назад не возвращается — лёгкое постепенно расправляется.</p>
+              <p><strong style="color: var(--color-graphite); font-weight: 500;">3. Диагностика и хирургия:</strong> кислородотерапия, обезболивание, рентген/УЗИ/КТ грудной клетки. При упорной утечке воздуха или рецидивах проводят малоинвазивную видеоторакоскопию (ВАТС) и ушивают дефект.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 6: INTERACTIVE QUIZ & TRAINER (White Band)
+         ========================================================= -->
+    <section id="quiz" class="band-white">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-dot"></span><span>06 · Самопроверка по ОБЗР</span></div>
+            <h2 class="section-title">Проверьте свои знания в реальных ситуациях</h2>
+          </div>
+          <p class="subheading">
+            6 контрольных вопросов с подробным разбором каждого ответа. Удобно для подготовки к зачёту и отработки алгоритмов.
+          </p>
+        </div>
+
+        <div class="data-card data-card--ash" style="padding: 36px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(32,32,32,0.1);">
+            <span class="tag-pill" style="background: var(--color-canvas-white);" id="quiz-progress-pill">Вопрос 1 из 6</span>
+            <span class="caption" id="quiz-score-label" style="color: var(--color-brass); font-weight: 500;">Верных ответов: 0</span>
+          </div>
+
+          <div id="quiz-stage">
+            <h3 id="quiz-question" style="font-size: clamp(20px, 2.5vw, 26px); margin-bottom: 22px; line-height: 1.25;"></h3>
+            <div id="quiz-options" style="display: grid; gap: 10px;"></div>
+
+            <div id="quiz-feedback" style="display: none; margin-top: 20px; padding: 20px; background-color: var(--color-canvas-white); border-left: 3px solid var(--color-brass);">
+              <div id="quiz-feedback-title" style="font-family: var(--font-polysans); font-size: 18px; margin-bottom: 6px;"></div>
+              <p id="quiz-feedback-text" style="font-size: 14.5px;"></p>
+            </div>
+
+            <div style="margin-top: 22px; display: flex; justify-content: flex-end; gap: 12px;">
+              <button type="button" id="quiz-next-btn" class="btn-primary" style="display: none;">Следующий вопрос →</button>
+            </div>
+          </div>
+
+          <div id="quiz-result" style="display: none; text-align: left;">
+            <div class="eyebrow">Итог тестирования</div>
+            <h3 id="quiz-final-score" style="font-size: 36px; margin-bottom: 12px;"></h3>
+            <p id="quiz-final-comment" class="subheading" style="margin-bottom: 24px; max-width: 600px;"></p>
+            <button type="button" id="quiz-restart-btn" class="btn-primary">Пройти тест заново</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="wordmark" style="margin-bottom: 14px;">
+            <span class="eyebrow-dot"></span>
+            <span>ПНЕВМОТОРАКС · ОБЗР</span>
+          </div>
+          <p style="font-size: 14.5px; max-width: 380px; margin-bottom: 16px;">
+            Образовательный веб-атлас по теме «Пневмоторакс и первая помощь при травмах грудной клетки». Подготовлено по материалам учебного конспекта и стандартам первой помощи.
+          </p>
+          <div style="display: inline-block; background-color: var(--color-ivory); border-radius: var(--radius-asymmetric); padding: 14px 20px;">
+            <div class="caption" style="color: var(--color-brass); font-size: 12px; text-transform: uppercase;">Создатели сайта</div>
+            <div style="font-family: var(--font-polysans); font-size: 17px; color: var(--color-graphite); margin-top: 4px;">
+              Андрей Фисталь · Путинцев Савелий
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="eyebrow" style="margin-bottom: 12px;">Разделы</div>
+          <div class="footer-links">
+            <a href="#anatomy">01 · Анатомия плевральной полости</a>
+            <a href="#symptoms">02 · Признаки и симптомы</a>
+            <a href="#simulator">03 · Симулятор механики дыхания</a>
+            <a href="#types">04 · Виды и классификация</a>
+            <a href="#first-aid">05 · Алгоритмы первой помощи</a>
+            <a href="#dressing-lab">06 · Окклюзионная повязка (3 края)</a>
+            <a href="#quiz">07 · Тест-тренажёр</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="eyebrow" style="margin-bottom: 12px;">Экстренно и справка</div>
+          <div class="footer-links" style="margin-bottom: 18px;">
+            <button type="button" id="footer-emergency-btn">Открыть памятку 103 / 112</button>
+            <button type="button" id="footer-replay-splash">Повторить вступительный экран</button>
+            <a href="#top">Вернуться в начало ↑</a>
+          </div>
+          <p class="caption" style="font-size: 12.5px;">
+            Внимание: сайт носит учебно-информационный характер. При любой травме груди или внезапной резкой одышке немедленно вызывайте 103 или 112.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span class="caption">Курс ОБЗР · Учебный проект</span>
+        <span class="caption">Андрей Фисталь, Путинцев Савелий</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       EMERGENCY & AUTHORS MODAL
+       ========================================================= -->
+  <div id="info-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-panel">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 18px;">
+        <div>
+          <div class="eyebrow" id="modal-eyebrow" style="margin-bottom: 4px;">Памятка</div>
+          <h3 id="modal-title" style="font-size: 28px;"></h3>
+        </div>
+        <button type="button" id="modal-close-btn" class="btn-ghost" style="padding: 8px 14px; min-height: 40px; font-size: 14px;">Закрыть ✕</button>
+      </div>
+      <div id="modal-body" style="font-size: 15px; color: var(--color-steel); display: grid; gap: 14px;"></div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT INTERACTIVITY
+       ========================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ---------------------------------------------------------
+         1. ENTRY SPLASH SCREEN
+         --------------------------------------------------------- */
+      const splash = document.getElementById('entry-splash');
+      const splashEnterBtn = document.getElementById('splash-enter-btn');
+      const splashSkipTop = document.getElementById('splash-skip-top');
+      const splashBar = document.getElementById('splash-progress-bar');
+      const splashTimerLabel = document.getElementById('splash-timer-label');
+      let splashInterval = null;
+      let splashTimeout = null;
+
+      function hideSplash() {
+        splash.classList.add('is-hidden');
+        clearInterval(splashInterval);
+        clearTimeout(splashTimeout);
+        document.body.style.overflow = '';
+      }
+
+      function showSplash() {
+        clearInterval(splashInterval);
+        clearTimeout(splashTimeout);
+        splash.classList.remove('is-hidden');
+        document.body.style.overflow = 'hidden';
+
+        const duration = 3800;
+        const start = Date.now();
+        splashBar.style.width = '0%';
+        splashTimerLabel.textContent = 'Открытие через 4 с';
+
+        splashInterval = setInterval(() => {
+          const elapsed = Date.now() - start;
+          const pct = Math.min(100, (elapsed / duration) * 100);
+          splashBar.style.width = pct + '%';
+          const rem = Math.max(0, Math.ceil((duration - elapsed) / 1000));
+          splashTimerLabel.textContent = rem > 0 ? 'Открытие через ' + rem + ' с' : 'Готово';
+          if (elapsed >= duration) {
+            clearInterval(splashInterval);
+          }
+        }, 50);
+
+        splashTimeout = setTimeout(hideSplash, duration);
+      }
+
+      splashEnterBtn.addEventListener('click', hideSplash);
+      splashSkipTop.addEventListener('click', hideSplash);
+
+      // Start splash on initial load
+      showSplash();
+
+      document.getElementById('footer-replay-splash').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+        showSplash();
+      });
+
+      /* ---------------------------------------------------------
+         2. MOBILE MENU DRAWER
+         --------------------------------------------------------- */
+      const mobileToggle = document.getElementById('mobile-menu-toggle');
+      const mobileDrawer = document.getElementById('mobile-drawer');
+
+      mobileToggle.addEventListener('click', () => {
+        const isOpen = mobileDrawer.classList.toggle('is-open');
+        mobileToggle.setAttribute('aria-expanded', String(isOpen));
+        mobileToggle.textContent = isOpen ? 'Закрыть' : 'Меню';
+      });
+
+      mobileDrawer.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileDrawer.classList.remove('is-open');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          mobileToggle.textContent = 'Меню';
+        });
+      });
+
+      /* ---------------------------------------------------------
+         3. MODALS (Emergency 112 & Authors Credits)
+         --------------------------------------------------------- */
+      const modal = document.getElementById('info-modal');
+      const modalEyebrow = document.getElementById('modal-eyebrow');
+      const modalTitle = document.getElementById('modal-title');
+      const modalBody = document.getElementById('modal-body');
+      const modalCloseBtn = document.getElementById('modal-close-btn');
+
+      function openModal(eyebrow, title, html) {
+        modalEyebrow.textContent = eyebrow;
+        modalTitle.textContent = title;
+        modalBody.innerHTML = html;
+        modal.classList.add('is-open');
+      }
+
+      function closeModal() {
+        modal.classList.remove('is-open');
+      }
+
+      modalCloseBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          if (!splash.classList.contains('is-hidden')) hideSplash();
+          closeModal();
+        }
+      });
+
+      function showEmergencyModal() {
+        openModal(
+          'Экстренный чеклист · 103 / 112',
+          'Что делать прямо сейчас',
+          '<div style="background:#ebe6dd;padding:18px;border-radius:6px 0 0 0;">' +
+            '<strong style="color:#202020;">1. Позвоните 103 или 112.</strong> Сообщите: «Подозрение на пневмоторакс, резкая боль в груди, одышка».' +
+          '</div>' +
+          '<p><strong style="color:#202020;">2. Обеспечьте воздух и позу:</strong> расстегните ремень, воротник, откройте окно. Посадите человека <strong>полусидя</strong> с опорой под спину.</p>' +
+          '<p><strong style="color:#202020;">3. Проверьте грудную клетку:</strong><br>• <strong>Раны нет (закрытый):</strong> покой, полусидя, наблюдение.<br>• <strong>Есть открытая рана (открытый):</strong> на выдохе закройте квадратной/прямоугольной плёнкой (целлофан, пакет) больше раны. Заклейте 3 стороны пластырем/скотчем, <strong>1 нижний край НЕ заклеивать!</strong></p>' +
+          '<p style="color:#ff682c;"><strong>Запрещено:</strong> вытаскивать торчащие предметы, укладывать ровно на спину, заклеивать 4-й край наглухо при риске клапана.</p>'
+        );
+      }
+
+      function showAuthorsModal() {
+        openModal(
+          'О проекте · Курс ОБЗР',
+          'Создатели учебного сайта',
+          '<p>Этот образовательный атлас по теме «Пневмоторакс» разработали и оформили:</p>' +
+          '<div style="background:#efefef;border-radius:6px 0 0 0;padding:22px;display:grid;gap:12px;">' +
+            '<div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(32,32,32,0.1);padding-bottom:10px;">' +
+              '<span style="font-family:var(--font-polysans);font-size:22px;color:#202020;">Андрей Фисталь</span>' +
+              '<span style="color:#816729;font-size:13px;">Соавтор проекта</span>' +
+            '</div>' +
+            '<div style="display:flex;justify-content:space-between;align-items:baseline;">' +
+              '<span style="font-family:var(--font-polysans);font-size:22px;color:#202020;">Путинцев Савелий</span>' +
+              '<span style="color:#816729;font-size:13px;">Соавтор проекта</span>' +
+            '</div>' +
+          '</div>' +
+          '<p class="caption">Адаптировано для смартфонов, iPhone, планшетов и ПК.</p>'
+        );
+      }
+
+      document.getElementById('open-emergency-btn').addEventListener('click', showEmergencyModal);
+      document.getElementById('footer-emergency-btn').addEventListener('click', showEmergencyModal);
+      document.getElementById('open-credits-btn').addEventListener('click', showAuthorsModal);
+      document.getElementById('mobile-credits-btn').addEventListener('click', () => {
+        mobileDrawer.classList.remove('is-open');
+        mobileToggle.textContent = 'Меню';
+        showAuthorsModal();
+      });
+
+      /* ---------------------------------------------------------
+         4. SYMPTOM TRIAGE CHECKER
+         --------------------------------------------------------- */
+      const selectedSymptoms = new Set();
+      const symChips = document.querySelectorAll('#symptom-checklist .symptom-chip');
+      const triageBadge = document.getElementById('triage-badge');
+      const triageTitle = document.getElementById('triage-title');
+      const triageDesc = document.getElementById('triage-desc');
+      const triageAction = document.getElementById('triage-action');
+
+      function updateTriage() {
+        const hasPain = selectedSymptoms.has('pain');
+        const hasWound = selectedSymptoms.has('wound');
+        const hasNoWound = selectedSymptoms.has('nowound');
+        const hasTension = selectedSymptoms.has('tension');
+        const hasCrepitus = selectedSymptoms.has('crepitus');
+
+        if (selectedSymptoms.size === 0) {
+          triageBadge.textContent = 'Ожидание выбора';
+          triageBadge.style.color = 'var(--color-brass)';
+          triageTitle.textContent = 'Выберите признаки слева';
+          triageDesc.textContent = 'Отметьте один или несколько симптомов, чтобы увидеть предварительную классификацию и немедленный порядок первой помощи.';
+          triageAction.textContent = 'Вызовите скорую помощь (103 / 112), оцените наличие раны и состояние дыхания.';
+          return;
+        }
+
+        if (hasTension || (hasCrepitus && !hasWound)) {
+          triageBadge.textContent = 'КРИТИЧЕСКИЙ РИСК · КЛАПАННЫЙ (НАПРЯЖЁННЫЙ)';
+          triageBadge.style.color = 'var(--color-ember-orange)';
+          triageTitle.textContent = 'Подозрение на клапанный пневмоторакс';
+          triageDesc.textContent = 'Вздутые вены шеи, смещение трахеи и «хруст снега» под кожей говорят о быстром росте положительного давления и сдавлении сердца. Счёт идёт на минуты.';
+          triageAction.textContent = 'Немедленно вызовите 103/112 с пометкой «напряжённый пневмоторакс, удушье». Придайте полусидячее положение. Если на груди есть герметичная повязка — срочно приоткройте её край на выдохе, чтобы стравить воздух!';
+        } else if (hasWound) {
+          triageBadge.textContent = 'ВЫСОКИЙ РИСК · ОТКРЫТЫЙ ПНЕВМОТОРАКС';
+          triageBadge.style.color = 'var(--color-ember-orange)';
+          triageTitle.textContent = 'Открытый пневмоторакс';
+          triageDesc.textContent = 'Через открытую рану грудная полость сообщается с атмосферой: воздух заходит на вдохе и выходит на выдохе, раскачивая органы средостения.';
+          triageAction.textContent = '1) Вызовите 103/112; 2) Полусидя, расстегните ремень/воротник; 3) На выдохе наложите квадратную/прямоугольную герметичную плёнку (целлофан/пакет) больше раны, закрепив 3 края. ОДИН КРАЙ НЕ ЗАКЛЕИВАТЬ!';
+        } else if (hasNoWound || hasPain || hasCrepitus) {
+          triageBadge.textContent = 'УМЕРЕННЫЙ / ВЫСОКИЙ РИСК · ЗАКРЫТЫЙ ТИП';
+          triageBadge.style.color = 'var(--color-brass)';
+          triageTitle.textContent = 'Вероятен закрытый пневмоторакс';
+          triageDesc.textContent = 'Целостность кожи не нарушена, но воздух попал в плевральную полость изнутри (разрыв буллы, травма, перелом ребра). Резкая односторонняя боль и одышка при вдохе — классическая картина.';
+          triageAction.textContent = 'Вызовите 103/112, обеспечьте приток свежего воздуха (окно, расстегнуть воротник и ремень), придайте полусидячее положение и следите, не нарастает ли удушье.';
+        }
+      }
+
+      symChips.forEach((chip) => {
+        chip.addEventListener('click', () => {
+          const key = chip.getAttribute('data-sym');
+          if (selectedSymptoms.has(key)) {
+            selectedSymptoms.delete(key);
+            chip.classList.remove('is-selected');
+            chip.querySelector('.symptom-box').textContent = '';
+          } else {
+            // Mutually exclusive wound vs no-wound helper
+            if (key === 'wound' && selectedSymptoms.has('nowound')) {
+              selectedSymptoms.delete('nowound');
+              const nw = document.querySelector('[data-sym="nowound"]');
+              nw.classList.remove('is-selected');
+              nw.querySelector('.symptom-box').textContent = '';
+            }
+            if (key === 'nowound' && selectedSymptoms.has('wound')) {
+              selectedSymptoms.delete('wound');
+              const w = document.querySelector('[data-sym="wound"]');
+              w.classList.remove('is-selected');
+              w.querySelector('.symptom-box').textContent = '';
+            }
+            selectedSymptoms.add(key);
+            chip.classList.add('is-selected');
+            chip.querySelector('.symptom-box').textContent = '✓';
+          }
+          updateTriage();
+        });
+      });
+
+      document.getElementById('triage-reset').addEventListener('click', () => {
+        selectedSymptoms.clear();
+        symChips.forEach((c) => {
+          c.classList.remove('is-selected');
+          c.querySelector('.symptom-box').textContent = '';
+        });
+        updateTriage();
+      });
+
+      /* ---------------------------------------------------------
+         5. INTERACTIVE THORACIC BREATHING SIMULATOR
+         --------------------------------------------------------- */
+      const simModes = {
+        normal: {
+          eyebrow: 'Состояние 01 · Норма',
+          title: 'Физиологическая норма',
+          svgHeading: 'Нормальное двустороннее дыхание',
+          statusTag: 'Вакуум сохранён',
+          statusClass: 'tag-pill--brass',
+          desc: 'Плевральная полость герметична. Отрицательное давление притягивает оба лёгких к грудной стенке. На вдохе диафрагма опускается, и лёгкие равномерно наполняются воздухом.',
+          pressureIn: '–8 см H₂O',
+          pressureOut: '–5 см H₂O',
+          collapse: '0%',
+          shift: 'Строго по центру',
+          comm: 'Отсутствует (герметично)',
+          risk: 'Нет',
+          riskEmber: false,
+          tactic: 'Дыхание свободное. Отрицательное давление не даёт лёгкому спадаться даже при полном выдохе.',
+          footer: 'Бежевый — здоровые лёгкие · Трахея и сердце строго по центру',
+          wound: false,
+          valve: false
+        },
+        closed: {
+          eyebrow: 'Состояние 02 · Закрытый',
+          title: 'Закрытый пневмоторакс',
+          svgHeading: 'Однократное скопление воздуха без раны',
+          statusTag: 'Кожа целая',
+          statusClass: 'tag-pill',
+          desc: 'Раны на грудной стенке нет. Небольшой объём воздуха попал в плевральную полость одномоментно (разрыв буллы или закрытая травма) и остановился. Объём воздуха не растёт.',
+          pressureIn: '–2 см H₂O',
+          pressureOut: '0 см H₂O',
+          collapse: '~35–40%',
+          shift: 'Почти без смещения',
+          comm: 'Нет сообщения с атмосферой',
+          risk: 'Умеренная',
+          riskEmber: false,
+          tactic: 'Вызвать 103/112, расстегнуть воротник и ремень, обеспечить приток свежего воздуха, придать полусидячее положение.',
+          footer: 'Оранжевый слой — замкнутый воздух в полости · Лёгкое сжато на ~40%',
+          wound: false,
+          valve: false
+        },
+        open: {
+          eyebrow: 'Состояние 03 · Открытый',
+          title: 'Открытый пневмоторакс',
+          svgHeading: 'Воздух входит и выходит через рану',
+          statusTag: 'Сквозная рана',
+          statusClass: 'tag-pill--ember',
+          desc: 'Есть открытая рана груди. На вдохе воздух засасывается в полость через рану, лёгкое спадается, а сердце качается в здоровую сторону. На выдохе часть воздуха выходит наружу — возникает маятниковое баллотирование средостения.',
+          pressureIn: '0 см H₂O (атм.)',
+          pressureOut: '+1 см H₂O',
+          collapse: '~65–75%',
+          shift: 'Баллотирует (качается)',
+          comm: 'Прямое через рану',
+          risk: 'Высокая (шок)',
+          riskEmber: true,
+          tactic: 'Вызвать 103/112, полусидя, на выдохе наложить окклюзионную повязку больше раны, закрепив 3 края (1 край не заклеивать).',
+          footer: 'Видна сквозная рана · При каждом вдохе сердце и трахея качаются (флотация)',
+          wound: true,
+          valve: false
+        },
+        tension: {
+          eyebrow: 'Состояние 04 · Клапанный',
+          title: 'Клапанный (напряжённый)',
+          svgHeading: 'Односторонний клапан нагнетает давление',
+          statusTag: 'Смертельно опасно',
+          statusClass: 'tag-pill--ember',
+          desc: 'Косой лоскут ткани пропускает воздух внутрь на вдохе, но захлопывается на выдохе. С каждым вдохом воздух накапливается: лёгкое полностью сжато, диафрагма вдавлена вниз, сердце и трахея смещены в здоровый бок!',
+          pressureIn: '+18 см H₂O',
+          pressureOut: '+26 см H₂O ↑',
+          collapse: '95–100% (тотальный)',
+          shift: 'Резко в здоровую сторону!',
+          comm: 'Односторонний ниппель',
+          risk: 'КРИТИЧЕСКАЯ',
+          riskEmber: true,
+          tactic: 'Срочно 103/112! Если закрыто герметичной повязкой — приподнять край на выдохе. Необходима врачебная пункция декомпрессии.',
+          footer: 'Давление растёт · Левое лёгкое полностью раздавлено · Сердце и трахея смещены влево на схеме',
+          wound: true,
+          valve: true
+        }
+      };
+
+      let currentSimMode = 'normal';
+      let simPlaying = true;
+      let simPhase = 0.5; // 0 = exhale, 1 = inhale
+      let simDir = 1;
+      let tensionBuild = 0.7;
+
+      const simTabBtns = document.querySelectorAll('.sim-tabs [data-mode]');
+      const simSlider = document.getElementById('sim-cycle-slider');
+      const simPlayBtn = document.getElementById('sim-play-btn');
+
+      const elRightLungGroup = document.getElementById('sim-right-lung-group');
+      const elLeftLungGroup = document.getElementById('sim-left-lung-group');
+      const elMediastinum = document.getElementById('sim-mediastinum');
+      const elDiaphragm = document.getElementById('sim-diaphragm');
+      const elAirPocket = document.getElementById('sim-air-pocket');
+      const elWoundGroup = document.getElementById('sim-wound-group');
+      const elValveFlap = document.getElementById('sim-valve-flap');
+      const elArrowsIn = document.getElementById('sim-arrows-in');
+      const elArrowsOut = document.getElementById('sim-arrows-out');
+      const elArrowsBlocked = document.getElementById('sim-arrows-blocked');
+      const elAirLabel = document.getElementById('sim-air-label');
+
+      function applySimulatorFrame() {
+        const m = simModes[currentSimMode];
+        const inh = simPhase; // 0 (exhale) -> 1 (inhale)
+
+        // Phase badge
+        document.getElementById('sim-phase-badge').textContent = inh >= 0.5 ? 'ФАЗА: ВДОХ (РАСШИРЕНИЕ)' : 'ФАЗА: ВЫДОХ (СЖАТИЕ)';
+
+        // Right healthy lung gently expands on inhale around center (160, 175)
+        const rScale = 0.90 + inh * 0.11;
+        elRightLungGroup.setAttribute('transform', `translate(${160 * (1 - rScale)}, ${175 * (1 - rScale)}) scale(${rScale})`);
+
+        // Left affected lung & air pocket & mediastinum shift
+        let lScale = 1;
+        let airAlpha = 0;
+        let shiftX = 0;
+        let diaphDrop = inh * 16;
+
+        if (currentSimMode === 'normal') {
+          lScale = rScale;
+          airAlpha = 0;
+          shiftX = 0;
+        } else if (currentSimMode === 'closed') {
+          lScale = 0.66 + inh * 0.04;
+          airAlpha = 0.18;
+          shiftX = -4;
+        } else if (currentSimMode === 'open') {
+          // On inhale air enters wound -> left lung shrinks slightly; mediastinum swings toward healthy side (-18)
+          lScale = 0.52 - inh * 0.08;
+          airAlpha = 0.20 + inh * 0.12;
+          shiftX = -6 - inh * 18;
+        } else if (currentSimMode === 'tension') {
+          // Completely squashed lung, huge orange fill, severe mediastinal shift to healthy right (-34..-42), diaphragm pushed down
+          lScale = 0.34;
+          airAlpha = 0.34 + inh * 0.08;
+          shiftX = -32 - inh * 8;
+          diaphDrop = 22;
+        }
+
+        // Anchor collapsed left lung toward hilum (308, 175)
+        const lx = 308;
+        const ly = 175;
+        elLeftLungGroup.setAttribute('transform', `translate(${lx * (1 - lScale)}, ${ly * (1 - lScale)}) scale(${lScale})`);
+
+        elMediastinum.setAttribute('transform', `translate(${shiftX}, 0)`);
+
+        // Diaphragm curve
+        const midY = 274 + diaphDrop;
+        const leftSideY = currentSimMode === 'tension' ? 298 : (258 + diaphDrop);
+        const rightSideY = 258 + diaphDrop;
+        elDiaphragm.setAttribute('d', `M 52 292 Q 160 ${rightSideY}, 270 ${midY} Q 380 ${leftSideY}, 488 292`);
+
+        elAirPocket.setAttribute('fill', `rgba(255, 104, 44, ${airAlpha.toFixed(2)})`);
+        elAirLabel.style.display = airAlpha > 0 ? 'block' : 'none';
+
+        // Wound and Arrows
+        if (m.wound) {
+          elWoundGroup.style.display = 'block';
+          elValveFlap.style.display = m.valve ? 'block' : 'none';
+          if (m.valve) {
+            // Flap opens inward on inhale, shuts on exhale
+            elValveFlap.setAttribute('d', inh >= 0.5 ? 'M 480 166 L 456 173' : 'M 480 166 L 478 190');
+            elArrowsIn.style.display = inh >= 0.5 ? 'block' : 'none';
+            elArrowsOut.style.display = 'none';
+            elArrowsBlocked.style.display = inh < 0.5 ? 'block' : 'none';
+          } else {
+            elArrowsIn.style.display = inh >= 0.5 ? 'block' : 'none';
+            elArrowsOut.style.display = inh < 0.5 ? 'block' : 'none';
+            elArrowsBlocked.style.display = 'none';
+          }
+        } else {
+          elWoundGroup.style.display = 'none';
+        }
+
+        // Dynamic telemetry pressure readout
+        document.getElementById('tel-pressure').textContent = inh >= 0.5 ? m.pressureIn : m.pressureOut;
+      }
+
+      function setSimulatorMode(mode) {
+        currentSimMode = mode;
+        const m = simModes[mode];
+
+        simTabBtns.forEach((btn) => {
+          const active = btn.getAttribute('data-mode') === mode;
+          btn.classList.toggle('is-active', active);
+          btn.setAttribute('aria-selected', String(active));
+        });
+
+        document.getElementById('sim-tel-eyebrow').textContent = m.eyebrow;
+        document.getElementById('sim-tel-title').textContent = m.title;
+        document.getElementById('sim-tel-desc').textContent = m.desc;
+        document.getElementById('sim-svg-heading').textContent = m.svgHeading;
+        document.getElementById('sim-svg-footer').textContent = m.footer;
+
+        const statusTag = document.getElementById('sim-status-tag');
+        statusTag.textContent = m.statusTag;
+        statusTag.className = 'tag-pill ' + m.statusClass;
+
+        document.getElementById('tel-collapse').textContent = m.collapse;
+        document.getElementById('tel-shift').textContent = m.shift;
+        document.getElementById('tel-comm').textContent = m.comm;
+        const riskEl = document.getElementById('tel-risk');
+        riskEl.textContent = m.risk;
+        riskEl.className = 'telemetry-val ' + (m.riskEmber ? 'is-ember' : 'is-brass');
+        document.getElementById('tel-tactic').textContent = m.tactic;
+
+        applySimulatorFrame();
+      }
+
+      simTabBtns.forEach((btn) => {
+        btn.addEventListener('click', () => setSimulatorMode(btn.getAttribute('data-mode')));
+      });
+
+      simSlider.addEventListener('input', () => {
+        simPlaying = false;
+        simPlayBtn.textContent = 'Запустить цикл';
+        simPhase = parseInt(simSlider.value, 10) / 100;
+        applySimulatorFrame();
+      });
+
+      simPlayBtn.addEventListener('click', () => {
+        simPlaying = !simPlaying;
+        simPlayBtn.textContent = simPlaying ? 'Пауза цикла' : 'Запустить цикл';
+      });
+
+      document.getElementById('sim-step-inhale').addEventListener('click', () => {
+        simPlaying = false;
+        simPlayBtn.textContent = 'Запустить цикл';
+        simPhase = 0.95;
+        simSlider.value = '95';
+        applySimulatorFrame();
+      });
+
+      document.getElementById('sim-step-exhale').addEventListener('click', () => {
+        simPlaying = false;
+        simPlayBtn.textContent = 'Запустить цикл';
+        simPhase = 0.05;
+        simSlider.value = '5';
+        applySimulatorFrame();
+      });
+
+      setInterval(() => {
+        if (!simPlaying) return;
+        simPhase += 0.025 * simDir;
+        if (simPhase >= 1) {
+          simPhase = 1;
+          simDir = -1;
+        } else if (simPhase <= 0) {
+          simPhase = 0;
+          simDir = 1;
+        }
+        simSlider.value = String(Math.round(simPhase * 100));
+        applySimulatorFrame();
+      }, 45);
+
+      setSimulatorMode('normal');
+
+      /* ---------------------------------------------------------
+         6. OCCLUSIVE DRESSING LAB (3-Sided Valve)
+         --------------------------------------------------------- */
+      let dressMode = 'three';
+      let dressBreath = 'inhale';
+
+      const dressTabs = document.querySelectorAll('[data-dress]');
+      const dressPatchGroup = document.getElementById('dress-patch-group');
+      const tapeBottom = document.getElementById('tape-bottom');
+      const dressUnsealedNote = document.getElementById('dress-unsealed-note');
+      const dressFlowArrows = document.getElementById('dress-flow-arrows');
+      const dressBadge = document.getElementById('dress-badge');
+      const dressInfoTitle = document.getElementById('dress-info-title');
+      const dressInfoText = document.getElementById('dress-info-text');
+      const dressInhaleBtn = document.getElementById('dress-inhale-btn');
+      const dressExhaleBtn = document.getElementById('dress-exhale-btn');
+
+      function renderDressingLab() {
+        dressInhaleBtn.className = dressBreath === 'inhale' ? 'btn-primary' : 'btn-ghost';
+        dressExhaleBtn.className = dressBreath === 'exhale' ? 'btn-primary' : 'btn-ghost';
+        dressInhaleBtn.style.cssText = 'padding:10px 18px;min-height:42px;font-size:14px;';
+        dressExhaleBtn.style.cssText = 'padding:10px 18px;min-height:42px;font-size:14px;';
+
+        if (dressMode === 'none') {
+          dressPatchGroup.style.display = 'none';
+          dressUnsealedNote.style.display = 'none';
+          dressBadge.textContent = 'Без повязки';
+          dressBadge.className = 'tag-pill tag-pill--ember';
+          dressInfoTitle.textContent = 'Сквозной ход воздуха: открытый пневмоторакс';
+          dressInfoText.innerHTML = 'Без герметизации воздух беспрепятственно <strong>заходит внутрь на вдохе</strong> и <strong>выходит на выдохе</strong>. Лёгкое не расправляется, сердце и сосуды раскачиваются при каждом дыхательном движении.';
+          if (dressBreath === 'inhale') {
+            dressFlowArrows.innerHTML = '<path d="M 380 145 L 285 145 M 285 145 L 298 139 M 285 145 L 298 151" fill="none" stroke="#ff682c" stroke-width="3"/><text x="386" y="149" fill="#ff682c" font-size="11.5" font-family="Inter, sans-serif" font-weight="500">Воздух засасывается в грудь!</text>';
+          } else {
+            dressFlowArrows.innerHTML = '<path d="M 285 145 L 380 145 M 380 145 L 367 139 M 380 145 L 367 151" fill="none" stroke="#816729" stroke-width="3"/><text x="386" y="149" fill="#816729" font-size="11.5" font-family="Inter, sans-serif" font-weight="500">Пузырится и выходит наружу</text>';
+          }
+        } else if (dressMode === 'four') {
+          dressPatchGroup.style.display = 'block';
+          tapeBottom.style.display = 'block';
+          dressUnsealedNote.style.display = 'none';
+          dressBadge.textContent = 'Опасно при повреждении лёгкого';
+          dressBadge.className = 'tag-pill tag-pill--ember';
+          dressInfoTitle.textContent = 'Опасность заклеивания всех 4 сторон наглухо';
+          dressInfoText.innerHTML = 'Если повреждена сама ткань лёгкого (бронх), при глухой повязке воздух из лёгкого попадает в плевральную полость, но <strong>не может выйти наружу</strong>. Давление растёт — открытый пневмоторакс превращается в смертельный <strong>клапанный</strong>!';
+          if (dressBreath === 'inhale') {
+            dressFlowArrows.innerHTML = '<text x="250" y="186" text-anchor="middle" fill="#202020" font-size="11" font-family="Inter, sans-serif" font-weight="500">Снаружи закрыто, но воздух может идти изнутри лёгкого</text>';
+          } else {
+            dressFlowArrows.innerHTML = '<line x1="170" y1="224" x2="330" y2="224" stroke="#ff682c" stroke-width="2.5"/><text x="250" y="242" text-anchor="middle" fill="#ff682c" font-size="11.5" font-family="Inter, sans-serif" font-weight="500">ВЫХОДА НЕТ — давление распирает грудь!</text>';
+          }
+        } else {
+          dressPatchGroup.style.display = 'block';
+          tapeBottom.style.display = 'none';
+          dressUnsealedNote.style.display = 'block';
+          dressBadge.textContent = 'Правильно · По конспекту';
+          dressBadge.className = 'tag-pill tag-pill--brass';
+          dressInfoTitle.textContent = 'На вдохе — закрыто, на выдохе — сброс воздуха';
+          dressInfoText.innerHTML = 'Квадратная/прямоугольная плёнка больше раны закреплена <strong>с трёх сторон</strong>, а один край не заклеен. На <strong>вдохе</strong> плёнка присасывается и блокирует вход воздуха. На <strong>выдохе</strong> избыток воздуха свободно выходит через нижний свободный край.';
+          if (dressBreath === 'inhale') {
+            dressFlowArrows.innerHTML = '<text x="250" y="186" text-anchor="middle" fill="#202020" font-size="11.5" font-family="Inter, sans-serif" font-weight="500">ВДОХ: Плёнка присосалась — воздух снаружи НЕ проходит ✓</text>';
+          } else {
+            dressFlowArrows.innerHTML = '<path d="M 250 166 L 250 250 M 250 250 L 243 238 M 250 250 L 257 238" fill="none" stroke="#816729" stroke-width="3"/><text x="342" y="248" fill="#816729" font-size="11" font-family="Inter, sans-serif" font-weight="500">ВЫДОХ: избыток воздуха вышел</text>';
+          }
+        }
+      }
+
+      dressTabs.forEach((t) => {
+        t.addEventListener('click', () => {
+          dressMode = t.getAttribute('data-dress');
+          dressTabs.forEach((b) => b.classList.toggle('is-active', b === t));
+          renderDressingLab();
+        });
+      });
+      dressInhaleBtn.addEventListener('click', () => { dressBreath = 'inhale'; renderDressingLab(); });
+      dressExhaleBtn.addEventListener('click', () => { dressBreath = 'exhale'; renderDressingLab(); });
+      renderDressingLab();
+
+      /* ---------------------------------------------------------
+         7. INTERACTIVE QUIZ
+         --------------------------------------------------------- */
+      const quizData = [
+        {
+          q: 'Что такое пневмоторакс по точному определению?',
+          opts: [
+            'Скопление крови в полости сердечной сумки',
+            'Попадание воздуха в плевральную полость между лёгким и грудной стенкой',
+            'Воспаление бронхов с образованием мокроты',
+            'Ушиб рёбер без нарушения герметичности грудной клетки'
+          ],
+          correct: 1,
+          explain: 'Пневмоторакс — это состояние, при котором воздух попадает в плевральную полость (пространство между висцеральной и париетальной плеврой), нарушая отрицательное давление и вызывая спадение лёгкого.'
+        },
+        {
+          q: 'Какой главный признак отличает открытый пневмоторакс от закрытого?',
+          opts: [
+            'При открытом нет боли, только кашель',
+            'При открытом есть сквозная рана, через которую воздух входит и выходит',
+            'При закрытом всегда набухают вены шеи',
+            'Закрытый встречается только у детей'
+          ],
+          correct: 1,
+          explain: 'При закрытом пневмотораксе сообщение с атмосферой отсутствует и открытой раны нет. При открытом — есть рана грудной стенки, через которую воздух свободно ходит при дыхании.'
+        },
+        {
+          q: 'Какое положение тела нужно придать пострадавшему в сознании при любом пневмотораксе?',
+          opts: [
+            'Уложить ровно на спину и поднять ноги вверх',
+            'Поставить на ноги и заставить активно дышать',
+            'Придать полусидячее положение, расстегнув ремень и воротник',
+            'Положить на живот головой вниз'
+          ],
+          correct: 2,
+          explain: 'Полусидячее положение (~45°) облегчает движение диафрагмы и улучшает вентиляцию здорового лёгкого. Ремень и воротник обязательно расстегивают для свободного дыхания.'
+        },
+        {
+          q: 'Какую форму и размер должна иметь окклюзионная повязка (целлофан/пакет/плёнка)?',
+          opts: [
+            'Узкая полоска меньше диаметра раны',
+            'Круглая салфетка ровно по краю кожи',
+            'Квадратная или прямоугольная форма, обязательно больше размеров раны',
+            'Скатана плотным жгутом и вставлена внутрь раны'
+          ],
+          correct: 2,
+          explain: 'Повязка должна быть квадратной или прямоугольной формы и обязательно больше раны (с запасом 3–5 см со всех сторон), чтобы надёжно прилегать к здоровой коже.'
+        },
+        {
+          q: 'Почему при наложении повязки пластырем, бинтом или клейкой лентой один край НЕ заклеивают?',
+          opts: [
+            'Чтобы сэкономить пластырь в аптечке',
+            'Чтобы не развился клапанный пневмоторакс — незаклеенный край выпускает избыток воздуха на выдохе',
+            'Чтобы в рану попадало больше кислорода для заживления',
+            'Это нужно только для удобства снятия повязки дома'
+          ],
+          correct: 1,
+          explain: 'Незаклеенный край работает как односторонний лепестковый клапан: на вдохе плёнка присасывается к коже и не пускает воздух извне, а на выдохе позволяет выйти избыточному воздуху из полости.'
+        },
+        {
+          q: 'Из грудной клетки пострадавшего торчит обломок ветки или нож. Ваши действия?',
+          opts: [
+            'Быстро выдернуть предмет и заклеить рану',
+            'Не извлекать предмет! Зафиксировать его вокруг валиками из бинта/одежды, вызвать 103/112',
+            'Залить рану перекисью водорода и протолкнуть глубже',
+            'Уложить человека бегом в машину на спину'
+          ],
+          correct: 1,
+          explain: 'Категорически запрещено вытаскивать инородные тела из грудной клетки: предмет часто зажимает повреждённый сосуд, и его удаление вызовет профузное кровотечение и резкий сброс воздуха.'
+        }
+      ];
+
+      let quizIdx = 0;
+      let quizScore = 0;
+      let quizAnswered = false;
+
+      const quizPill = document.getElementById('quiz-progress-pill');
+      const quizScoreLbl = document.getElementById('quiz-score-label');
+      const quizQ = document.getElementById('quiz-question');
+      const quizOpts = document.getElementById('quiz-options');
+      const quizFeedback = document.getElementById('quiz-feedback');
+      const quizFbTitle = document.getElementById('quiz-feedback-title');
+      const quizFbText = document.getElementById('quiz-feedback-text');
+      const quizNextBtn = document.getElementById('quiz-next-btn');
+      const quizStage = document.getElementById('quiz-stage');
+      const quizResult = document.getElementById('quiz-result');
+
+      function renderQuizQuestion() {
+        quizAnswered = false;
+        const item = quizData[quizIdx];
+        quizPill.textContent = `Вопрос ${quizIdx + 1} из ${quizData.length}`;
+        quizScoreLbl.textContent = `Верных ответов: ${quizScore}`;
+        quizQ.textContent = item.q;
+        quizFeedback.style.display = 'none';
+        quizNextBtn.style.display = 'none';
+        quizOpts.innerHTML = '';
+
+        item.opts.forEach((optText, i) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'quiz-option';
+          btn.innerHTML = `<span>${optText}</span><span class="caption" style="flex-shrink:0;">0${i + 1}</span>`;
+          btn.addEventListener('click', () => handleQuizAnswer(i, btn));
+          quizOpts.appendChild(btn);
+        });
+      }
+
+      function handleQuizAnswer(chosenIdx, chosenBtn) {
+        if (quizAnswered) return;
+        quizAnswered = true;
+        const item = quizData[quizIdx];
+        const allBtns = quizOpts.querySelectorAll('.quiz-option');
+        allBtns.forEach((b) => (b.disabled = true));
+
+        if (chosenIdx === item.correct) {
+          quizScore++;
+          chosenBtn.classList.add('is-correct');
+          chosenBtn.lastElementChild.textContent = '✓ Верно';
+          quizFbTitle.textContent = 'Точный ответ';
+          quizFbTitle.style.color = 'var(--color-brass)';
+          quizFeedback.style.borderLeftColor = 'var(--color-brass)';
+        } else {
+          chosenBtn.classList.add('is-wrong');
+          chosenBtn.lastElementChild.textContent = '✕ Ошибка';
+          allBtns[item.correct].classList.add('is-correct');
+          allBtns[item.correct].lastElementChild.textContent = '✓ Верно';
+          quizFbTitle.textContent = 'Обратите внимание';
+          quizFbTitle.style.color = 'var(--color-ember-orange)';
+          quizFeedback.style.borderLeftColor = 'var(--color-ember-orange)';
+        }
+
+        quizScoreLbl.textContent = `Верных ответов: ${quizScore}`;
+        quizFbText.textContent = item.explain;
+        quizFeedback.style.display = 'block';
+        quizNextBtn.style.display = 'inline-flex';
+        quizNextBtn.textContent = quizIdx === quizData.length - 1 ? 'Показать итог →' : 'Следующий вопрос →';
+      }
+
+      quizNextBtn.addEventListener('click', () => {
+        if (quizIdx < quizData.length - 1) {
+          quizIdx++;
+          renderQuizQuestion();
+        } else {
+          quizStage.style.display = 'none';
+          quizResult.style.display = 'block';
+          document.getElementById('quiz-final-score').textContent = `Результат: ${quizScore} из ${quizData.length}`;
+          let comment = '';
+          if (quizScore === quizData.length) {
+            comment = 'Отлично! Вы уверенно знаете анатомию, все виды пневмоторакса и правильную технику наложения трёхсторонней окклюзионной повязки.';
+          } else if (quizScore >= 4) {
+            comment = 'Хороший уровень подготовки. Повторите детали по ошибкам выше или ещё раз проверьте схему в лаборатории повязки.';
+          } else {
+            comment = 'Рекомендуем ещё раз пролистать разделы «Виды» и «Первая помощь», чтобы закрепить критически важные правила.';
+          }
+          document.getElementById('quiz-final-comment').textContent = comment;
+        }
+      });
+
+      document.getElementById('quiz-restart-btn').addEventListener('click', () => {
+        quizIdx = 0;
+        quizScore = 0;
+        quizResult.style.display = 'none';
+        quizStage.style.display = 'block';
+        renderQuizQuestion();
+      });
+
+      renderQuizQuestion();
+    })();
+  </script>
+</body>
+</html>
